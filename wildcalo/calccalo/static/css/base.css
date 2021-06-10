@@ -1,0 +1,145 @@
+/* RESET CSS */
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/* END OF RESET */
+@import url('https://fonts.googleapis.com/css2?family=Knewave&display=swap');
+body {
+        background-color: #757163ff;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        font-family: 'Bubblegum Sans', cursive;
+        font-size: 28px;
+        font-weight: 1000;
+        background-image: url("/media/bg2.png");
+        background-repeat: no-repeat;
+        background-size: 360px;
+
+    }
+
+
+a {
+      color: black;
+      text-decoration: none;
+    }
+
+@media (max-width:480px) {
+
+    .header {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .header div {
+        margin-bottom: 5px;
+    }
+
+    .logo {
+        text-align: center;
+
+    }
+    .logo img {
+        width: 60%;
+    }
+
+    input[type="text"],input[type="number"],input[type="file"],input[type="password"], input[type="email"],select {
+      background-color :#928b67ff;
+      font-size: 24px;
+      font-family: 'Bubblegum Sans', cursive;
+      width: 250px;
+      text-align: center;
+      -webkit-box-sizing:border-box;
+      -moz-box-sizing:border-box;
+      box-sizing:border-box;
+      padding: 20px;
+      vertical-align:top;
+      height:24px;
+      display:block;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 80%;
+      color: black;
+      border: none;
+
+    }
+
+
+    .forms{
+        text-align: center;
+    }
+
+    .forgot {
+        margin-top:5px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .forgot p {
+        padding: 8px;
+    }
+
+    .login {
+         width: 36%;
+    }
+
+}
+
+
+
+
+
+

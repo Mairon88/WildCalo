@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Logowanie{% endblock %}
+
+{% block content %}
+    <div class="login_forms">
+            {% if form.errors %}
+                <p>
+                    Nazwa użytkownika lub hasło są nieprawidłowe
+                    Spróbuj ponownie.
+                </p>
+            {% endif %}
+
+        <form  class="forms" action="{% url 'login' %}" method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}" />
+            <p><input class="login" type="image" name="submit" src="/media/login.png"  alt="Submit"/></p>
+        </form>
+        <div class="forgot">
+            <p><a href="{% url 'password_reset' %}">Forgot Pass?</a></p>
+            <p><a href="{% url 'register' %}">Register</a></p>
+            <p><a href="#">Get API</a></p>
+        </div>
+
+    </div>
+
+{% endblock %}

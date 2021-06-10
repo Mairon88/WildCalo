@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Utwórz konto{% endblock %}
+
+{% block content %}
+    <h1>Utwórz konto</h1>
+    <p class="forms" >Wypełnij poniższy fomularz, aby się zarejestrować:</p>
+    <form class="forms" action="." method="post">
+        {{ user_form.as_p }}
+        {% csrf_token %}
+        <input class="save" type="image" name="submit" src="/media/img/create_user.png"  alt="Submit"/>
+    </form>
+{% endblock %}
