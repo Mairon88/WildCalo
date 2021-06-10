@@ -6,8 +6,8 @@ class LoginForm(forms.Form):
 
 
 class UserRegistrationForm(forms.ModelForm):
-    password = forms.CharField(label='Hasło', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Powtórz haslo', widget=forms.PasswordInput)
+    password = forms.CharField(label='Password', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Repeat Password', widget=forms.PasswordInput)
 
     class Meta:
         model = User

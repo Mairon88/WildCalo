@@ -61,7 +61,7 @@ body {
         font-size: 28px;
         font-weight: 1000;
         background-image: url("/media/bg2.png");
-        background-repeat: no-repeat;
+        background-repeat: repeat;
         background-size: 360px;
 
     }
@@ -117,7 +117,6 @@ a {
 
     }
 
-
     .forms{
         text-align: center;
     }
@@ -126,15 +125,51 @@ a {
         margin-top:5px;
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-around;
+        justify-content: space-between;
     }
     .forgot p {
         padding: 8px;
     }
 
-    .login {
+    .login, .send{
          width: 36%;
     }
+    .create {
+         width: 70%;
+    }
+
+
+    .api {
+        text-align: center;
+        padding-top:10px;
+    }
+
+    .reset_pass, .logout {
+       text-align: center;
+    }
+
+    .reset_pass p{
+       margin-bottom: 20px;
+    }
+
+    .reset_pass h1, .logout h1{
+       font-size: 32px;
+       margin-bottom: 20px;
+    }
+    .register, .reset {
+       text-align: center;
+       font-size: 26px;
+    }
+
+    .register h1, .reset h1{
+       font-size: 32px;
+       margin-bottom: 20px;
+    }
+
+    .register a, .user a, .logout a{
+        color: #a1a1a1ff;
+    }
+
 
 }
 
