@@ -84,6 +84,7 @@ a {
 
     .header div {
         margin-bottom: 5px;
+
     }
 
     .logo {
@@ -91,6 +92,15 @@ a {
 
     }
     .logo img {
+        width: 60%;
+    }
+
+    .logo2 {
+       text-align: left;
+       width: 70%;
+    }
+
+    .logo2 img {
         width: 60%;
     }
 
@@ -170,8 +180,101 @@ a {
         color: #a1a1a1ff;
     }
 
+    .boar_with_carrot img {
+        width: 80%;
+        text-align: center;
 
+    }
+
+    .calendar {
+        text-align: center;
+
+        padding-right: 20px;
+    }
+
+    .boar_with_carrot {
+        padding-top: 10px;
+        text-align: center;
+
+    }
+
+    .calendar img {
+        width: 95%;
+        text-align: center;
+
+    }
+
+    .boar_cal{
+        background: #928b67ff;
+        border-radius: 30px;
+        opacity: 0.7;
+        margin: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+        .settings_meal{
+        border-radius: 30px;
+        opacity: 0.7;
+        padding-top: 10px;
+        margin: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+        .bars{
+        background: #928b67ff;
+        border-radius: 30px;
+        opacity: 0.7;
+        padding-top: 10px;
+        margin: 2px;
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-around;
+        width: 95%;
+    }
+
+    .daily {
+        width: 100%;
+    }
+
+     .settings_meal div{
+        text-align: center;
+
+    }
+
+    .settings_div {
+    background: #928b67ff;
+    border-radius: 30px;
+    line-height: 1.2;
+    font-size: 25px;
+    width: 45%;
+    }
+
+    .meal_div {
+    background: #928b67ff;
+    border-radius: 30px;
+    line-height: 1.2;
+    font-size: 25px;
+    width: 45%;
+    }
+
+   .settings img {
+        width: 55%;
+    }
+
+       .meal img {
+        width: 70%;
+    }
+    .menu {
+    border: solid 1px;
+    }
 }
+
 
 
 

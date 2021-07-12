@@ -3,8 +3,39 @@
 {% block title %}Penel główny{% endblock %}
 
 {% block content %}
-  <h1>Pane główny</h1>
-  <p>Witaj w panelu głównym</p>
+        {% if request.user.is_authenticated %}
+        <div class="menu">
+
+                <div class="boar_cal">
+                    <div class="boar_with_carrot"><img src="/media/boar_with_carrot.png"></div>
+                    <div class="calendar"><img src="/media/calendar.png"></div>
+                </div>
+                <div class="settings_meal">
+                    <div class="settings_div">
+                        <div class="settings"><img src="/media/settings.png"></div>
+                        <a href="#">Settings</a>
+                    </div>
+                    <div class="meal_div">
+                        <div class="meal"><img src="/media/meal.png"></div>
+                        <a href="#">Add a meal</a>
+                    </div>
+                </div>
+                <div class="bars">
+                    <div class="daily"><p>Daily limit</p></div>
+                    <div class="values">
+                        <div>
+                            <p>kcal</p>
+                            <p>prot</p>
+                            <p>carb</p>
+                            <p>fat</p>
+                        </div>
+                    </div>
+                </div>
+
+
+        </div>
+
+        {% endif %}
 {% endblock %}
 
 
