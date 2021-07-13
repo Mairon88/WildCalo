@@ -64,6 +64,7 @@ body {
         background-repeat: repeat;
         background-size: 360px;
 
+
     }
 
 
@@ -77,18 +78,24 @@ a {
     .header {
         display: flex;
         align-items: center;
-        align-items: center;
+        justify-content: space-around;
+        text-align: center;
 
     }
 
     .header div {
+        display: flex;
         margin-bottom: 5px;
-
+        align-items: center;
+        justify-content: space-around;
 
     }
 
     .logo {
-        text-align: center;
+        display: flex;
+        margin-bottom: 5px;
+        align-items: center;
+        justify-content: space-around;
 
     }
     .logo img {
@@ -103,8 +110,8 @@ a {
     }
 
     .logo2 img {
-        width: 60%;
-
+     margin-right: 25%;
+        width: 70%;
 
     }
 
@@ -192,7 +199,7 @@ a {
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        margin-top: 8%;
+        margin-top: 5%;
         margin-bottom: 5%;
 
     }
@@ -205,7 +212,7 @@ a {
     }
 
     .boar_with_carrot img {
-        width: 80%;
+        width: 85%;
         text-align: center;
         margin-left: 10%;
 
@@ -220,12 +227,22 @@ a {
         width: 100%;
         text-align: center;
 
+
+    }
+
+        .calendar p{
+        position: relative;
+        padding-top: 30%;
+        left: 45%;
+
     }
 
     .calendar img {
         width: 55%;
         text-align: center;
         margin-left: 9%;
+        margin-top: 10%;
+        margin-bottom: 10%;
 
 
     }
@@ -236,31 +253,59 @@ a {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        margin-bottom: 5%;
+
     }
 
 
         .bars{
         background: #928b67ff;
         border-radius: 30px;
-        opacity: 0.7;
-        padding-top: 10px;
-        margin: 2px;
-        margin-top: 20px;
+        opacity: 1;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-around;
-        width: 95%;
-        border: solid 1px;
+        margin-top: 5%;
+        margin-bottom: 5%;
     }
 
     .daily {
         width: 100%;
+        text-align: center;
+        margin-top: 2%;
+        margin-bottom: 2%;
+        font-size:7vw;
 
+    }
+
+    .values {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .values div {
+        width: 22%;
+        font-size:7vw;
+        text-align: center;
+        margin-bottom: 1%;
+    }
+
+    .values_text{
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        align-items: center;
+        justify-content: space-around;
+        font-size: 6vw;
     }
 
      .settings_meal div{
         text-align: center;
+        font-size:7vw;
 
     }
 
@@ -284,6 +329,8 @@ a {
    .settings img {
 
         width: 55%;
+                margin-top: 10%;
+        margin-bottom: 10%;
     }
 
     .settings {
@@ -300,13 +347,16 @@ a {
     justify-content: center;
     }
 
-       .meal img {
-        width: 70%;
+   .meal img {
+    width: 70%;
+    margin-top: 10%;
+    margin-bottom: 10%;
     }
 
 
 
     .logout {
+    margin-top: 10%;
          width: 100%;
     }
 
@@ -314,6 +364,218 @@ a {
         text-align: right;
         width: 20%;
     }
+
+    .kcal, .prot, .fat, .carb {
+        display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    }
+
+/* Circle  progress bars */
+    :root {
+      --value-percent: 90;
+    }
+
+    .box {
+        position: relative;
+
+        display: flex;
+        flex-direction: column;
+        width: 70px;
+        height: 70px;
+    }
+
+    .box .percent1{
+        position: relative;
+
+        width: 70px;
+        height: 70px;
+    }
+
+        .box .percent1 svg{
+        position: relative;
+
+        width: 70px;
+        height: 70px;
+    }
+
+        .box .percent1 svg circle {
+        fill: none;
+        stroke-width: 10;
+        stroke: #53406ef3;
+        transform: translate(5px,5px);
+        stroke-dasharray: 190;
+        stroke-dashoffset: 190;
+        stroke-linecap: round;
+        }
+
+        .box .percent1 svg circle:nth-child(1) {
+         stroke-dashoffset: 0;
+         stroke: #a19797f3;
+    }
+
+            .box .percent1 svg circle:nth-child(2) {
+         stroke-dashoffset: calc(190 - (190 * 87) / 100);
+         stroke: #44325df3;
+    }
+    .box .percent1 .number{
+        position: absolute;
+        top: 38%;
+        left: 8%;
+        width: 100%;
+        height: 100%
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 6vw;
+
+    }
+
+    .box .percent2{
+        position: relative;
+
+        width: 70px;
+        height: 70px;
+    }
+            .box .percent2 svg{
+        position: relative;
+
+        width: 70px;
+        height: 70px;
+    }
+
+        .box .percent2 svg circle {
+        fill: none;
+        stroke-width: 10;
+        stroke: #525896f3;
+        transform: translate(5px,5px);
+        stroke-dasharray: 190;
+        stroke-dashoffset: 190;
+        stroke-linecap: round;
+        }
+
+        .box .percent2 svg circle:nth-child(1) {
+         stroke-dashoffset: 0;
+         stroke: #a19797f3;
+    }
+
+            .box .percent2 svg circle:nth-child(2) {
+         stroke-dashoffset: calc(190 - (190 * 87) / 100);
+         stroke: #525896f3;
+    }
+    .box .percent2 .number{
+        position: absolute;
+        top: 38%;
+        left: 8%;
+        width: 100%;
+        height: 100%
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 6vw;
+        }
+
+           .box .percent3{
+        position: relative;
+
+        width: 70px;
+        height: 70px;
+    }
+
+        .box .percent3 svg{
+        position: relative;
+
+        width: 70px;
+        height: 70px;
+    }
+        .box .percent3 svg circle {
+        fill: none;
+        stroke-width: 10;
+        stroke: #8a5154f3;
+        transform: translate(5px,5px);
+        stroke-dasharray: 190;
+        stroke-dashoffset: 190;
+        stroke-linecap: round;
+        }
+
+        .box .percent3 svg circle:nth-child(1) {
+         stroke-dashoffset: 0;
+         stroke: #a19797f3;
+    }
+
+            .box .percent3 svg circle:nth-child(2) {
+         stroke-dashoffset: calc(190 - (190 * 87) / 100);
+         stroke: #8a5154f3;
+    }
+    .box .percent3 .number{
+        position: absolute;
+        top: 38%;
+        left: 8%;
+        width: 100%;
+        height: 100%
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 6vw;
+
+    }
+
+        .box .percent4 svg{
+        position: relative;
+
+        width: 70px;
+        height: 70px;
+    }
+
+        .box .percent4 svg{
+        position: relative;
+
+        width: 70px;
+        height: 70px;
+    }
+
+        .box .percent4 svg circle {
+        fill: none;
+        stroke-width: 10;
+        stroke: #43776bf3;
+        transform: translate(5px,5px);
+        stroke-dasharray: 190;
+        stroke-dashoffset: 190;
+        stroke-linecap: round;
+        }
+
+        .box .percent4 svg circle:nth-child(1) {
+         stroke-dashoffset: 0;
+         stroke: #a19797f3;
+    }
+
+            .box .percent4 svg circle:nth-child(2) {
+         stroke-dashoffset: var(--value-percent);
+         stroke: #43776bf3;
+    }
+    .box .percent4 .number{
+        position: absolute;
+        top: 38%;
+        left: 2%;
+        width: 100%;
+        height: 100%
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 6vw;
+
+    }
+
+    .number h2 span {
+        font-size: 4vw;
+    }
+
+
+    svg {
+    margin-left: 7%;
+    }
+
 
 }
 

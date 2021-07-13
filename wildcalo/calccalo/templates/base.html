@@ -21,16 +21,17 @@
         {% else %}
             <div class="logo2"><img src="/media/logo2.png"></div>
         {% endif %}
+        {% if request.user.is_authenticated %}
+            <div class="user">
 
-        <div class="user">
-            {% if request.user.is_authenticated %}
-<!--                Witaj, {{ request.user.first_name }}!-->
-                <a href="{% url 'logout' %}"><input class="logout" type="image" name="submit" src="/media/logout.png"  alt="Submit"/></a>
+    <!--                Witaj, {{ request.user.first_name }}!-->
+                    <a href="{% url 'logout' %}"><input class="logout" type="image" name="submit" src="/media/logout.png"  alt="Submit"/></a>
 
-            {% else %}
-<!--                <a href="{% url 'login' %}">Login</a>-->
-            {% endif %}
-        </div>
+
+    <!--                <a href="{% url 'login' %}">Login</a>-->
+
+            </div>
+        {% endif %}
     </div>
     {% block content %}
     {% endblock %}
