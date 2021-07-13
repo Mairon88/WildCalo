@@ -77,13 +77,13 @@ a {
     .header {
         display: flex;
         align-items: center;
-        flex-direction: row;
-        flex-wrap: wrap;
         align-items: center;
+
     }
 
     .header div {
         margin-bottom: 5px;
+
 
     }
 
@@ -93,15 +93,19 @@ a {
     }
     .logo img {
         width: 60%;
+
     }
 
     .logo2 {
        text-align: left;
-       width: 70%;
+       width: 80%;
+
     }
 
     .logo2 img {
         width: 60%;
+
+
     }
 
     input[type="text"],input[type="number"],input[type="file"],input[type="password"], input[type="email"],select {
@@ -180,49 +184,60 @@ a {
         color: #a1a1a1ff;
     }
 
+
+    .boar_cal{
+        background: #928b67ff;
+        border-radius: 30px;
+        opacity: 1;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 8%;
+        margin-bottom: 5%;
+
+    }
+
+    .boar_cal div{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+    }
+
     .boar_with_carrot img {
         width: 80%;
         text-align: center;
+        margin-left: 10%;
+
+    }
+
+    .boar_with_carrot {
+        width: 50%;
 
     }
 
     .calendar {
-        text-align: center;
-
-        padding-right: 20px;
-    }
-
-    .boar_with_carrot {
-        padding-top: 10px;
+        width: 100%;
         text-align: center;
 
     }
 
     .calendar img {
-        width: 95%;
+        width: 55%;
         text-align: center;
+        margin-left: 9%;
 
-    }
 
-    .boar_cal{
-        background: #928b67ff;
-        border-radius: 30px;
-        opacity: 0.7;
-        margin: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
     }
 
         .settings_meal{
         border-radius: 30px;
-        opacity: 0.7;
-        padding-top: 10px;
-        margin: 2px;
+        opacity: 1;
         display: flex;
         align-items: center;
-        justify-content: space-around;
+        justify-content: space-between;
     }
+
 
         .bars{
         background: #928b67ff;
@@ -236,10 +251,12 @@ a {
         align-items: center;
         justify-content: space-around;
         width: 95%;
+        border: solid 1px;
     }
 
     .daily {
         width: 100%;
+
     }
 
      .settings_meal div{
@@ -248,6 +265,7 @@ a {
     }
 
     .settings_div {
+
     background: #928b67ff;
     border-radius: 30px;
     line-height: 1.2;
@@ -264,15 +282,39 @@ a {
     }
 
    .settings img {
+
         width: 55%;
+    }
+
+    .settings {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    }
+
+    .meal {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
     }
 
        .meal img {
         width: 70%;
     }
-    .menu {
-    border: solid 1px;
+
+
+
+    .logout {
+         width: 100%;
     }
+
+    .user {
+        text-align: right;
+        width: 20%;
+    }
+
 }
 
 

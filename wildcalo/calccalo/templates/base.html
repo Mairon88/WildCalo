@@ -25,7 +25,8 @@
         <div class="user">
             {% if request.user.is_authenticated %}
 <!--                Witaj, {{ request.user.first_name }}!-->
-                <a href="{% url 'logout' %}">Logout</a>
+                <a href="{% url 'logout' %}"><input class="logout" type="image" name="submit" src="/media/logout.png"  alt="Submit"/></a>
+
             {% else %}
 <!--                <a href="{% url 'login' %}">Login</a>-->
             {% endif %}
