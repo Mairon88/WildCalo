@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Ustawienia{% endblock %}
+
+{% block content %}
+        {% if request.user.is_authenticated %}
+            <h1>Settings</h1>
+             <form class="settings2" action="." method="post">
+                 <div class="line">
+                    <div class="label_line"> <p>{{ profile_form.gender.label }}</p></div>
+                     <div class="gender"> {{ profile_form.gender }}</div>
+                 </div>
+                 <div class="line">
+                     <div class="label_line"><p>{{ profile_form.age.label }}</p></div>
+                     <div>{{ profile_form.age }} <span class="blind">kg   </span></div>
+                 </div>
+                 <div class="line">
+                     <div class="label_line"><p>{{ profile_form.weight.label }}</p></div>
+                     <div>{{ profile_form.weight }} <span
+                     >kg   </span></div>
+                 </div>
+                 <div class="line">
+                     <div class="label_line"><p>{{ profile_form.height.label }}</p></div>
+                     <div>{{ profile_form.height }} <span>cm   </span></div>
+                 </div>
+                 <div class="line">
+                      <div class="label_line"><p>{{ profile_form.physical_activity.label }}</p></div>
+                      <div>{{ profile_form.physical_activity }}</div>
+                 </div>
+                 <div class="line">
+                     <div class="label_line"><p>{{ profile_form.new_weight.label }}</p></div>
+                     <div>{{ profile_form.new_weight }} <span>kg   </span></div>
+                 </div>
+
+                 <div class="line">
+                      <div class="label_line"><p>{{ profile_form.time.label }}</p></div>
+                     <div>{{ profile_form.time }} <span>days</span></div>
+                 </div>
+                 <a href="{% url 'dashboard' %}">Calculate</a>
+                 <div>
+                     <p>Info</p>
+                 </div>
+
+                 {% csrf_token %}
+
+             </form>
+
+        {% endif %}
+<a href="{% url 'dashboard' %}">Back</a>
+<a href="{% url 'dashboard' %}">Save</a>
+{% endblock %}
+
+

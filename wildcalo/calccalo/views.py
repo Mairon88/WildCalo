@@ -1,15 +1,16 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
-from .forms import LoginForm, UserRegistrationForm
+from .forms import LoginForm, UserRegistrationForm, ProfileForm
 from django.contrib.auth.models import User
 
 
 @login_required
 def dashboard(request):
-    user = request.user
-    days = user.profile.days_to_lose_weight
+
+    days = request.user.profile.time
     return render(request,
                   'account/dashboard.html',
                   {'section': 'dashboard',
@@ -29,5 +30,19 @@ def register(request):
     return render(request,
                   'account/register.html',
                   {'user_form': user_form})
+
+@login_required
+def settings(request):
+    if request.method == 'POST':
+        profile_form = ProfileForm(instance=request.user.profile, data=request.POST, files=request.FILES)
+        if profile_form.is_valid():
+            profile_form.save()
+
+    else:
+        profile_form = ProfileForm()
+
+    return render(request,
+                  'account/settings.html',
+                  {'profile_form': profile_form})
 
 

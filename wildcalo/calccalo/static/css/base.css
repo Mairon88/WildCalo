@@ -124,9 +124,8 @@ a {
       -webkit-box-sizing:border-box;
       -moz-box-sizing:border-box;
       box-sizing:border-box;
-      padding: 20px;
       vertical-align:top;
-      height:24px;
+      height:35px;
       display:block;
       margin-top: 10px;
       margin-bottom: 20px;
@@ -574,6 +573,102 @@ a {
     svg {
     margin-left: 7%;
     }
+
+/* SETTINGS */
+
+    .settings select {
+      background-color :#928b67ff;
+      font-size: 24px;
+      font-family: 'Bubblegum Sans', cursive;
+      width: 250px;
+      text-align: center;
+      -webkit-box-sizing:border-box;
+      -moz-box-sizing:border-box;
+      box-sizing:border-box;
+      vertical-align:top;
+      height:35px;
+      display:block;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 80%;
+      color: black;
+      border: none;
+
+
+    }
+
+    .settings2 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    }
+
+    .settings2 div{
+        width: 100%;
+        background: #928b67ff;
+        margin-top: 4px;
+        margin-bottom: 4px;
+        display: flex;
+        flex-wrap: wrap;
+        border-radius: 5px;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+
+    .settings2 input{
+    background: #c5cacaff;
+    border-radius: 20px;
+    width: 50%;
+    font-size: 6vw;
+    justify-content: flex-start;
+    margin: 0;
+    }
+
+    .settings2 select{
+    background: #c5cacaff;
+    border-radius: 20px;
+    text-align-last:center;
+    font-size: 6vw;
+    width: 100%;
+    margin: 0;
+    }
+
+    .line {
+        display: flex;
+        flex-wrap: wrap;
+
+    }
+
+        .line div {
+        display: flex;
+        flex-wrap: wrap;
+        width:55%;
+        margin: 2px;
+
+
+    }
+
+    .line .label_line {
+    width: 30%;
+    }
+
+    .blind {
+    color: #928b67ff;
+    }
+
+    .line span {
+        white-space: pre;
+        font-size: 6vw;}
+
+
+    .label_line p{
+        text-align: center;
+    }
+
 
 
 }
