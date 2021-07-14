@@ -3,13 +3,17 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from .forms import LoginForm, UserRegistrationForm
+from django.contrib.auth.models import User
 
 
 @login_required
 def dashboard(request):
+    user = request.user
+    days = user.profile.days_to_lose_weight
     return render(request,
                   'account/dashboard.html',
-                  {'section': 'dashboard'})
+                  {'section': 'dashboard',
+                   'days': days})
 
 def register(request):
     if request.method == 'POST':
@@ -25,3 +29,5 @@ def register(request):
     return render(request,
                   'account/register.html',
                   {'user_form': user_form})
+
+

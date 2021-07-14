@@ -233,16 +233,15 @@ a {
         .calendar p{
         position: relative;
         padding-top: 30%;
-        left: 45%;
+        left: 38%;
 
     }
 
     .calendar img {
         width: 55%;
-        text-align: center;
-        margin-left: 9%;
         margin-top: 10%;
         margin-bottom: 10%;
+        margin-right:10%
 
 
     }

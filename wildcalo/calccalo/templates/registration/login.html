@@ -4,12 +4,6 @@
 
 {% block content %}
     <div class="login_forms">
-            {% if form.errors %}
-                <p>
-                    Nazwa użytkownika lub hasło są nieprawidłowe
-                    Spróbuj ponownie.
-                </p>
-            {% endif %}
 
         <form  class="forms" action="{% url 'login' %}" method="post">
             {{ form.as_p }}
