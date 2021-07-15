@@ -5,6 +5,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from .forms import LoginForm, UserRegistrationForm, ProfileForm
 from django.contrib.auth.models import User
+from .my_logic import HarrisBededictEquation
 
 
 @login_required
@@ -38,8 +39,17 @@ def settings(request):
         if profile_form.is_valid():
             profile_form.save()
 
+
+
     else:
         profile_form = ProfileForm(instance=request.user.profile)
+        person = request.user.profile
+
+        calculate = HarrisBededictEquation(person.gender, person.age, person.weight, person.height,
+                                           person.physical_activity, person.new_weight, person.time)
+        calculate.total_daily_energy_requirement()
+
+        print(request.user.profile.gender, request.user.profile.age, request.user.profile.physical_activity, )
 
     return render(request,
                   'account/settings.html',

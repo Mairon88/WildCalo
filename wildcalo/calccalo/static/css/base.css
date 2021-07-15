@@ -586,10 +586,9 @@ a {
       -moz-box-sizing:border-box;
       box-sizing:border-box;
       vertical-align:top;
-      height:35px;
       display:block;
-      margin-top: 10px;
-      margin-bottom: 20px;
+      margin-top: 5%;
+      margin-bottom:  5%;
       margin-left: auto;
       margin-right: auto;
       line-height: 80%;
@@ -608,14 +607,14 @@ a {
 
     .settings2 div{
         width: 100%;
-
-        margin-top: 4px;
-        margin-bottom: 4px;
+        margin-top: 1%;
+        margin-bottom: 1%;
         display: flex;
         flex-wrap: wrap;
         border-radius: 5px;
         align-items: center;
         justify-content: space-around;
+        font-size: 6vw;
     }
 
 
@@ -623,7 +622,7 @@ a {
     background: #c5cacaff;
     border-radius: 20px;
     width: 50%;
-    font-size: 6vw;
+    font-size: 5vw;
     justify-content: flex-start;
     margin: 0;
     }
@@ -632,7 +631,7 @@ a {
     background: #c5cacaff;
     border-radius: 20px;
     text-align-last:center;
-    font-size: 6vw;
+    font-size: 5vw;
     width: 100%;
     margin: 0;
     }
@@ -663,7 +662,7 @@ a {
 
     .line span {
         white-space: pre;
-        font-size: 6vw;}
+        font-size: 5vw;}
 
 
     .label_line p{
@@ -671,14 +670,16 @@ a {
     }
 
     h1 {
-     font-size: 10vw;
+     font-size: 8vw;
      text-align: center;
+     margin: 5%;
     }
 
     .info {
     display: flex;
     border-radius: 20px;
-    height: 20vw;
+    border: solid 1px;
+    height: 30vw;
     }
 
     .info div{
@@ -689,7 +690,7 @@ a {
     }
 
     .info_content {
-    font-size: 6vw;
+    font-size: 25vw;
 
     }
 
