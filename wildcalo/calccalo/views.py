@@ -39,7 +39,7 @@ def settings(request):
             profile_form.save()
 
     else:
-        profile_form = ProfileForm()
+        profile_form = ProfileForm(instance=request.user.profile)
 
     return render(request,
                   'account/settings.html',

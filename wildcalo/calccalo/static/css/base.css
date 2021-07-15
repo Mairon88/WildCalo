@@ -192,7 +192,7 @@ a {
 
 
     .boar_cal{
-        background: #928b67ff;
+        background: #8a8674ff;
         border-radius: 30px;
         opacity: 1;
         display: flex;
@@ -257,7 +257,7 @@ a {
 
 
         .bars{
-        background: #928b67ff;
+        background: #8a8674ff;
         border-radius: 30px;
         opacity: 1;
         display: flex;
@@ -309,7 +309,7 @@ a {
 
     .settings_div {
 
-    background: #928b67ff;
+    background: #8a8674ff;
     border-radius: 30px;
     line-height: 1.2;
     font-size: 25px;
@@ -317,7 +317,7 @@ a {
     }
 
     .meal_div {
-    background: #928b67ff;
+    background: #8a8674ff;
     border-radius: 30px;
     line-height: 1.2;
     font-size: 25px;
@@ -608,7 +608,7 @@ a {
 
     .settings2 div{
         width: 100%;
-        background: #928b67ff;
+
         margin-top: 4px;
         margin-bottom: 4px;
         display: flex;
@@ -619,7 +619,7 @@ a {
     }
 
 
-    .settings2 input{
+    .settings2 input:not(.save, .calculate){
     background: #c5cacaff;
     border-radius: 20px;
     width: 50%;
@@ -658,6 +658,7 @@ a {
 
     .blind {
     color: #928b67ff;
+    opacity: 0.0;
     }
 
     .line span {
@@ -669,6 +670,53 @@ a {
         text-align: center;
     }
 
+    h1 {
+     font-size: 10vw;
+     text-align: center;
+    }
+
+    .info {
+    display: flex;
+    border-radius: 20px;
+    height: 20vw;
+    }
+
+    .info div{
+        align-items: center;
+        justify-content: center;
+
+
+    }
+
+    .info_content {
+    font-size: 6vw;
+
+    }
+
+    .save, .back, .calculate{
+        width: 55%;
+    }
+
+    .calculate{
+
+        width: 40%;
+    }
+
+    .calculate div{
+    text-align: center;
+    }
+    .back_save {
+        display: flex;
+    }
+    .back_save div {
+    width: 50%;
+    align-items: center;
+    justify-content: space-between;
+    }
+
+    .back_save div p{
+    text-align: right;
+    }
 
 
 }

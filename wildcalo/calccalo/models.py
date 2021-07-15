@@ -7,13 +7,13 @@ class Profile(models.Model):
         ('female','Female')
     }
 
-    ACTIVITY_CHOICES = {
+    ACTIVITY_CHOICES = [
         ('sit','Sedentary lifestyle'),
         ('low','Low activity'),
         ('mod', 'Moderate activity'),
         ('high','High activity'),
         ('vhigh', 'Very high activity')
-    }
+    ]
 
     STATUS_CHOICES = {
         ('waiting','Waiting'),

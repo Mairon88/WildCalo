@@ -36,18 +36,22 @@
                       <div class="label_line"><p>{{ profile_form.time.label }}</p></div>
                      <div>{{ profile_form.time }} <span>days</span></div>
                  </div>
-                 <a href="{% url 'dashboard' %}">Calculate</a>
-                 <div>
-                     <p>Info</p>
+                 <div><p><input class="calculate" type="image" name="button" src="/media/calculate.png"/></p></div>
+                 <div class="info">
+                     <div><p>Info</p></div>
+                     <div class="info_content"><p>sdfsdfsdfs sdfsdfsd sdfsdf</p></div>
                  </div>
 
                  {% csrf_token %}
-
+                 <div class="back_save">
+                     <div><a href="{% url 'dashboard' %}"><img class="back" src="/media/back.png"></a></div>
+                <div><p><input class="save" type="image" name="submit" src="/media/save.png"  alt="Submit"/></p></div>
+                </div>
              </form>
 
         {% endif %}
-<a href="{% url 'dashboard' %}">Back</a>
-<a href="{% url 'dashboard' %}">Save</a>
+
+
 {% endblock %}
 
 
