@@ -8,8 +8,13 @@
 
                 <div class="boar_cal">
                     <div class="boar_with_carrot"><img src="/media/boar_with_carrot.png"></div>
-                    <div class="calendar"><p>{{days}}</p>
+                    {% if days >= 14 and days <= 90 %}
+                        <div class="calendar"><p>{{days}}</p>
+                    {% else %}
+                        <div class="calendar"><p>XX</p>
+                    {% endif %}
                         <img src="/media/calendar.png"></div>
+
                 </div>
                 <div class="settings_meal">
                     <div class="settings_div">
@@ -26,71 +31,44 @@
                     <div class="values">
 
                             <div class="box">
-                                <div class="percent1">
-                                     <svg width="60" height="60">
-                                        <circle cx="42%" cy="42%" r="42%"></circle>
-                                        <circle cx="42%" cy="42%" r="42%"></circle>
-                                    </svg>
-                                    <div class="number">
-                                        <h2>87<span>%</span></h2>
-                                    </div>
-                                </div>
+                              <p class="cal">0</p>
+                               <hr class="carb">
+                              <p class="cal">{{daily_calory_limit}}</p>
+                                <hr class="cal">
+                              <p class="cal">cal [kcal]</p>
 
                             </div>
 <!--                            <p>kcal</p>-->
 
 
                             <div class="box">
-                                <div class="percent2">
-                                    <svg width="60" height="60">
-                                        <circle cx="42%" cy="42%" r="42%"></circle>
-                                        <circle cx="42%" cy="42%" r="42%"></circle>
-                                    </svg>
-                                    <div class="number">
-                                        <h2>87<span>%</span></h2>
-                                    </div>
-                                </div>
-
+                              <p class="carb">0</p>
+                               <hr class="carb">
+                              <p class="carb">{{limit_carb}}</p>
+                                <hr class="carb">
+                              <p class="carb">carb [g]</p>
                             </div>
 <!--                            <p>prot</p>-->
 
 
                             <div class="box">
-                                <div class="percent3">
-                                      <svg width="60" height="60">
-                                        <circle cx="42%" cy="42%" r="42%"></circle>
-                                        <circle cx="42%" cy="42%" r="42%"></circle>
-                                    </svg>
-                                    <div class="number">
-                                        <h2>87<span>%</span></h2>
-                                    </div>
-                                </div>
-
+                              <p class="prot">0</p>
+                               <hr class="prot">
+                              <p class="prot">{{limit_prot}}</p>
+                                <hr class="prot">
+                              <p class="prot">prot [g]</p>
                             </div>
 <!--                            <p>carb</p>-->
 
 
                             <div class="box">
-                                <div class="percent4">
-                                    <svg width="60" height="60">
-                                        <circle cx="42%" cy="42%" r="42%"></circle>
-                                        <circle cx="42%" cy="42%" r="42%"></circle>
-                                    </svg>
-                                    <div class="number">
-                                        <h2 style="--value-percent:0">90<span>%</span></h2>
-                                    </div>
-                                </div>
-
+                              <p class="fat">0</p>
+                               <hr class="fat">
+                              <p class="fat">{{limit_fat}}</p>
+                                <hr class="fat">
+                              <p class="fat">fat [g]</p>
                             </div>
 <!--                            <p>fat</p>-->
-
-                    </div>
-                    <div class="values_text">
-
-                        <div>kcal</div>
-                        <div>prot</div>
-                        <div>carb</div>
-                        <div>fat</div>
 
                     </div>
                 </div>

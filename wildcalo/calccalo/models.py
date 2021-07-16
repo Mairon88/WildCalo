@@ -20,14 +20,19 @@ class Profile(models.Model):
         ('ongoing','Ongoing')
     }
 
+    BODY_TYPE_CHOICES = {
+        ('mezo','Mesomorph'),
+        ('ekto','Ectomorph'),
+        ('endo', 'Endomorphs'),
+    }
 
     user = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     gender = models.CharField(max_length=30, choices=GENDER_CHOICES, default='male')
-    age = models.IntegerField()
-    weight = models.IntegerField()
-    height = models.IntegerField()
+    age = models.IntegerField(null=True)
+    weight = models.IntegerField(null=True)
+    height = models.IntegerField(null=True)
     physical_activity = models.CharField(max_length=50, choices=ACTIVITY_CHOICES, default='sit')
-    new_weight = models.IntegerField()
+    new_weight = models.IntegerField(null=True)
     start_date = models.DateField(null=True, blank=True)
     end_date = models.DateField(null=True, blank=True)
 
@@ -35,6 +40,7 @@ class Profile(models.Model):
     ppm = models.FloatField(null=True, blank=True)
     tdee = models.FloatField(null=True, blank=True)
     deficit = models.IntegerField(null=True, blank=True)
+    daily_calory_limit = models.IntegerField(null=True, blank=True)
 
     kcal = models.IntegerField(null=True, blank=True)
     prot = models.IntegerField(null=True, blank=True)
