@@ -678,7 +678,6 @@ a {
     .info {
     display: flex;
     border-radius: 20px;
-    border: solid 1px;
     height: 30vw;
     }
 
@@ -686,11 +685,16 @@ a {
         align-items: center;
         justify-content: center;
 
+    }
+
+    .info_content p{
+    font-size: 6vw;
+    text-align: justify;
 
     }
 
-    .info_content {
-    font-size: 25vw;
+    .info_content p span{
+    color: #c5cacaff;
 
     }
 

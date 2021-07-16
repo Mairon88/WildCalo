@@ -38,8 +38,14 @@ def settings(request):
         profile_form = ProfileForm(instance=request.user.profile, data=request.POST, files=request.FILES)
         if profile_form.is_valid():
             profile_form.save()
+        person = request.user.profile
 
-
+        calculate = HarrisBededictEquation(person.gender, person.age, person.weight, person.height,
+                                           person.physical_activity, person.new_weight, person.time)
+        tder = calculate.total_daily_energy_requirement()
+        bm = calculate.basic_metabolism()
+        dd_dcl = calculate.calculate_deficit()
+        def_percent = calculate.is_deficit_to_big()
 
     else:
         profile_form = ProfileForm(instance=request.user.profile)
@@ -47,12 +53,24 @@ def settings(request):
 
         calculate = HarrisBededictEquation(person.gender, person.age, person.weight, person.height,
                                            person.physical_activity, person.new_weight, person.time)
-        calculate.total_daily_energy_requirement()
+        tder = calculate.total_daily_energy_requirement()
+        bm = calculate.basic_metabolism()
+        dd_dcl = calculate.calculate_deficit()
+        def_percent = calculate.is_deficit_to_big()
 
-        print(request.user.profile.gender, request.user.profile.age, request.user.profile.physical_activity, )
 
     return render(request,
                   'account/settings.html',
-                  {'profile_form': profile_form})
+                  {'profile_form': profile_form,
+                   'tder':tder,
+                   'bm':bm,
+                   'dd':dd_dcl[0],
+                   'dcl': dd_dcl[1],
+                   'dw' : dd_dcl[2],
+                   'time': person.time,
+                   'def_percent': def_percent,
+                   'weight': person.weight,
+                   'new_weight': person.new_weight,
+                   })
 
 

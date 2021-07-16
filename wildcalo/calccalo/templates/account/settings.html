@@ -37,7 +37,27 @@
                      <div>{{ profile_form.time }} <span>days</span></div>
                  </div>
                  <div class="info">
-                     <div class="info_content"><p>sdfsdfsdfs sdfsdfsd sdfsdf</p></div>
+                     <div class="info_content">
+                         {% if def_percent > 30 %}
+                            <p> I'm sorry, but the daily caloric deficit is {{ def_percent }}%,
+                                the limit is 30%. It is dangerous to your health. Try to increase the time or reduce the
+                                weight difference to reduce the caloric deficit.
+                            </p>
+                         {% else %}
+                             {% if weight > new_weight %}
+                                 <p> Yours <span>total daily energy requirement is {{ tder }} kcal</span>. If you want to lose
+                                     {{ dw }} kg in {{ time }} days you must create a daily caloric <span>deficit</span>
+                                     of<span> {{ dd }}  kcal</span>. So the <span>daily caloric limit is {{ dcl }} kcal</span>.</p>
+                             {% elif weight == new_weight %}
+                                 <p> Yours <span>total daily energy requirement is {{ tder }} kcal</span>.
+                                     If you want to stay at this weight level, <span>eat {{ tder }} kcal</span>.
+                             {% elif weight < new_weight %}
+                                 <p> Yours <span>total daily energy requirement is {{ tder }} kcal</span>. If you want to gain
+                                     {{ dw }} kg in {{ time }} days you must create a daily caloric <span>surplus</span>
+                                     of<span> {{ dd }}  kcal</span>. So the <span>daily caloric limit is {{ dcl }} kcal</span>.</p>
+                             {% endif %}
+                         {% endif %}
+                     </div>
                  </div>
 
                  {% csrf_token %}

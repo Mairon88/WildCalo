@@ -22,22 +22,32 @@ class HarrisBededictEquation:
 
     def basic_metabolism(self):
         if self.gender == 'male':
-            mens_bm = round(66 + (13.7 * self.weight) + (5 * self.height) - (6.8 * self.age),2)
-            print(mens_bm)
-            return mens_bm
+            mens_bm = 66 + (13.7 * self.weight) + (5 * self.height) - (6.8 * self.age)
+            return int(mens_bm)
 
         else:
-            women_bm = round(655 + (9.6 * self.weight) + (1.8 * self.height) - (4.7 * self.age), 2)
-            return women_bm
+            women_bm = 655 + (9.6 * self.weight) + (1.8 * self.height) - (4.7 * self.age)
+            return int(women_bm)
 
     def total_daily_energy_requirement(self):
         for activity in self.activity_choices.keys():
             if self.activity == activity:
                 tder = self.activity_choices[activity] * self.basic_metabolism()
-                print(tder)
-                return tder
 
-    # def calculate_deficit(self):
-    #     daily_deficit =
+        return int(tder)
+
+    def calculate_deficit(self):
+        weight_to_lose = abs(self.weight - self.new_weight)
+        daily_deficit = (abs(self.weight - self.new_weight)) * 7000 / self.time
+        if self.new_weight < self.weight:
+            daily_calorie_limit = self.total_daily_energy_requirement() - daily_deficit
+        else:
+            daily_calorie_limit = self.total_daily_energy_requirement() + daily_deficit
+
+        return int(daily_deficit), int(daily_calorie_limit), int(weight_to_lose)
+
+    def is_deficit_to_big(self):
+        percent_deficit = int((self.calculate_deficit()[0]/self.total_daily_energy_requirement())*100)
+        return percent_deficit
 
 

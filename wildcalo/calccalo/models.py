@@ -45,7 +45,7 @@ class Profile(models.Model):
     limit_carb = models.IntegerField(null=True, blank=True)
     limit_fat = models.IntegerField(null=True, blank=True)
 
-    status = models.CharField(max_length=30, choices=STATUS_CHOICES, default='waiting') # jeśli data start pokryje sie z dzisiejszą to stattus zmieni sie na ongoing
+    status = models.CharField(max_length=30, choices=STATUS_CHOICES, default='waiting')
 
     def __str__(self):
         return 'Profil użytkownika {}.'.format(self.user.username)
