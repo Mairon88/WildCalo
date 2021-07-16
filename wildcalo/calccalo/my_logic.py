@@ -60,9 +60,9 @@ class HarrisBededictEquation:
             else:
                 daily_calorie_limit = self.total_daily_energy_requirement() + daily_deficit
         except:
-            daily_deficit=  None
-            daily_calorie_limit = None
-            weight_to_lose = None
+            daily_deficit=  0
+            daily_calorie_limit = 0
+            weight_to_lose = 0
             return daily_deficit, daily_calorie_limit,  weight_to_lose
 
         return int(daily_deficit), int(daily_calorie_limit), int(weight_to_lose)

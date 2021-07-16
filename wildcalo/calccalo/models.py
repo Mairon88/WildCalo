@@ -40,7 +40,7 @@ class Profile(models.Model):
     ppm = models.FloatField(null=True, blank=True)
     tdee = models.FloatField(null=True, blank=True)
     deficit = models.IntegerField(null=True, blank=True)
-    daily_calory_limit = models.IntegerField(null=True, blank=True)
+    daily_calory_limit = models.IntegerField(null=True, blank=True, default=0)
 
     kcal = models.IntegerField(null=True, blank=True)
     prot = models.IntegerField(null=True, blank=True)
