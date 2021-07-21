@@ -3,10 +3,12 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
-from .forms import LoginForm, UserRegistrationForm, ProfileForm
+from .forms import LoginForm, UserRegistrationForm, ProfileForm, MealsProductsForm
 from django.contrib.auth.models import User
 from .my_logic import HarrisBededictEquation, NutritionalValues
-from .models import Profile
+from .models import Profile, Products
+from django.http import HttpResponseRedirect
+import datetime
 
 
 @login_required
@@ -90,3 +92,23 @@ def settings(request):
                    })
 
 
+@login_required
+def meals(request):
+    today = datetime.date.today()
+    products = Products.objects.all()
+
+    weight_form = MealsProductsForm(data=request.GET)
+    if weight_form.is_valid():
+        weight = int(request.GET['weight'])
+        product_id = request.GET['product']
+        obj = Products.objects.get(pk=product_id)
+        product_to_save = [weight, (weight/100)*obj.kcal, (weight/100)*obj.prot, (weight/100)*obj.carb,
+                           (weight/100)*obj.fat]
+        print(product_to_save)
+        return HttpResponseRedirect(request.path_info)
+    return render(request,
+                  'account/meals.html',
+                  {'products':products,
+                   'today':today,
+                   'weight_form': weight_form}
+                  )

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Profile, Meals, Products
+from .models import Profile, Meals, Products, MealsProducts, UserProducts
 
 
 @admin.register(Profile)
@@ -10,8 +10,16 @@ class ProfileAdmin(admin.ModelAdmin):
 
 @admin.register(Meals)
 class MealsAdmin(admin.ModelAdmin):
-    list_display = ('person', 'name', 'products', 'kcal', 'prot', 'carb', 'fat')
+    list_display = ('person', 'name', 'kcal', 'prot', 'carb', 'fat')
 
 @admin.register(Products)
 class MealsProductsAdmin(admin.ModelAdmin):
+    list_display = ('name', 'type', 'kcal', 'carb', 'prot', 'fat')
+
+@admin.register(MealsProducts)
+class MealsProductsAdmin(admin.ModelAdmin):
+    list_display = ('name', 'meal','weight', 'kcal', 'carb', 'prot', 'fat')
+
+@admin.register(UserProducts)
+class UserProductsAdmin(admin.ModelAdmin):
     list_display = ('name', 'type', 'kcal', 'carb', 'prot', 'fat')

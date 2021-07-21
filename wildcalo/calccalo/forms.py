@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Profile
+from .models import Profile, MealsProducts, Products
 from django.forms.widgets import DateInput
 
 class LoginForm(forms.Form):
@@ -24,7 +24,6 @@ class UserRegistrationForm(forms.ModelForm):
 
 class ProfileForm(forms.ModelForm):
 
-
     class Meta:
         model = Profile
         fields = ('gender', 'age', 'weight', 'height', 'physical_activity', 'new_weight', 'time')
@@ -36,3 +35,11 @@ class ProfileForm(forms.ModelForm):
     new_weight = forms.IntegerField()
     physical_activity = forms.CharField(widget=forms.Select(choices=Profile.ACTIVITY_CHOICES))
     time = forms.IntegerField()
+
+class MealsProductsForm(forms.ModelForm):
+    class Meta:
+        model = MealsProducts
+        fields = ('weight',)
+
+    weight = forms.FloatField()
+    product = forms.ModelChoiceField(queryset=Products.objects.all())

@@ -15,4 +15,5 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     # path('edit/', views.edit, name='edit'),
     path('settings/', views.settings, name='settings'),
+    path('meals/', views.meals, name='meals'),
 ]

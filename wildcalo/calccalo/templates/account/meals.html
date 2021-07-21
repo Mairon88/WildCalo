@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Ustawienia{% endblock %}
+
+{% block content %}
+        {% if request.user.is_authenticated %}
+            <h1>Add a meal</h1>
+            <div class="today">{{ today }}</div>
+
+            <form action="." method="get">
+                {{ weight_form.weight }}
+                {{ weight_form.product }}
+                {% csrf_token %}
+                <input type="submit" value="click">
+            </form>
+        {% endif %}
+        <div class="back_save">
+                     <div><a href="{% url 'dashboard' %}"><img class="back" src="/media/back.png"></a></div>
+
+                </div>
+
+
+{% endblock %}
+
+

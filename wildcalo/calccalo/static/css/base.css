@@ -557,7 +557,15 @@ a {
     }
 
 
+      input[type="text"] .list ,input[type="number"] .list ,input[type="file"] .list ,input[type="password"] .list , input[type="email"] .list ,select{
+      font-size: 70%;
 
+    }
+
+    .today {
+        text-align: center;
+        font-size: 6vw;
+    }
 }
 
 
