@@ -1,4 +1,4 @@
-from .models import Profile
+from .models import Profile, Meals
 
 class HarrisBededictEquation:
 
@@ -110,6 +110,34 @@ class NutritionalValues:
             return 0
         return int(fat_g)
 
+
+def create_meals(profile):
+
+    breakfast = Meals.objects.filter(person=profile.id,
+                                     name='breakfast').exists() # check if meal exist for this profile
+    breakfast_2 = Meals.objects.filter(person=profile.id,
+                                    name='breakfast_2').exists()  # check if meal exist for this profile
+    dinner = Meals.objects.filter(person=profile.id,
+                                    name='dinner').exists()  # check if meal exist for this profile
+    lunch = Meals.objects.filter(person=profile.id,
+                                    name='lunch').exists()  # check if meal exist for this profile
+    supper = Meals.objects.filter(person=profile.id,
+                                    name='supper').exists()  # check if meal exist for this profile
+    snacks = Meals.objects.filter(person=profile.id,
+                                    name='snacks').exists()  # check if meal exist for this profile
+
+    if not breakfast:
+        Meals.objects.create(person=profile, name='breakfast')
+    if not breakfast_2:
+        Meals.objects.create(person=profile, name='breakfast_2')
+    if not dinner:
+        Meals.objects.create(person=profile, name='dinner')
+    if not lunch:
+        Meals.objects.create(person=profile, name='lunch')
+    if not supper:
+        Meals.objects.create(person=profile, name='supper')
+    if not snacks:
+        Meals.objects.create(person=profile, name='snacks')
 
 
 

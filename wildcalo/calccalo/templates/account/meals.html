@@ -6,7 +6,35 @@
         {% if request.user.is_authenticated %}
             <h1>Add a meal</h1>
             <div class="today">{{ today }}</div>
-
+            <p>Breakfast</p>
+            <form action="." method="get">
+                {{ weight_form.weight }}
+                {{ weight_form.product }}
+                {% csrf_token %}
+                <input type="submit" value="click">
+            </form>
+            <p>II Breakfast</p>
+            <form action="." method="get">
+                {{ weight_form.weight }}
+                {{ weight_form.product }}
+                {% csrf_token %}
+                <input type="submit" value="click">
+            </form>
+            <p>Lunch</p>
+            <form action="." method="get">
+                {{ weight_form.weight }}
+                {{ weight_form.product }}
+                {% csrf_token %}
+                <input type="submit" value="click">
+            </form>
+            <p>Dinner</p>
+            <form action="." method="get">
+                {{ weight_form.weight }}
+                {{ weight_form.product }}
+                {% csrf_token %}
+                <input type="submit" value="click">
+            </form>
+            <p>Supper</p>
             <form action="." method="get">
                 {{ weight_form.weight }}
                 {{ weight_form.product }}

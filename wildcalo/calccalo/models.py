@@ -78,7 +78,7 @@ class Meals(models.Model):
         verbose_name_plural = 'Meals'
 
     def __str__(self):
-        return f'Posiłek {self.name} - {self.person}'
+        return f'Posiłek {self.name} - {self.person} - {self.id}'
 
 class MealsProducts(models.Model):
     weight = models.FloatField(null=True, blank=True)

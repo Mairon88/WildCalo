@@ -5,8 +5,8 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from .forms import LoginForm, UserRegistrationForm, ProfileForm, MealsProductsForm
 from django.contrib.auth.models import User
-from .my_logic import HarrisBededictEquation, NutritionalValues
-from .models import Profile, Products
+from .my_logic import HarrisBededictEquation, NutritionalValues, create_meals
+from .models import Profile, Products, MealsProducts, Meals
 from django.http import HttpResponseRedirect
 import datetime
 
@@ -94,6 +94,11 @@ def settings(request):
 
 @login_required
 def meals(request):
+
+    user = request.user
+    profile = request.user.profile
+    create_meals(profile)
+
     today = datetime.date.today()
     products = Products.objects.all()
 
@@ -102,9 +107,9 @@ def meals(request):
         weight = int(request.GET['weight'])
         product_id = request.GET['product']
         obj = Products.objects.get(pk=product_id)
-        product_to_save = [weight, (weight/100)*obj.kcal, (weight/100)*obj.prot, (weight/100)*obj.carb,
-                           (weight/100)*obj.fat]
-        print(product_to_save)
+        product_to_save = [weight, obj.name, round((weight/100)*obj.kcal,1), round((weight/100)*obj.prot,1),
+                           round((weight/100)*obj.carb,1), round((weight/100)*obj.fat,1)]
+        MealsProducts.objects.create(weight=1000.0,name='Sraka', kcal=233.0, prot=233.0, carb=233.0, fat=233.0, meal_id=2)
         return HttpResponseRedirect(request.path_info)
     return render(request,
                   'account/meals.html',
