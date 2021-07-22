@@ -67,10 +67,10 @@ class Meals(models.Model):
         ('snacks', 'Snacks')
     ]
 
-    kcal = models.IntegerField(null=True, blank=True)
-    prot = models.IntegerField(null=True, blank=True)
-    carb = models.IntegerField(null=True, blank=True)
-    fat = models.IntegerField(null=True, blank=True)
+    kcal = models.FloatField(null=True, blank=True, default=0)
+    prot = models.FloatField(null=True, blank=True, default=0)
+    carb = models.FloatField(null=True, blank=True, default=0)
+    fat = models.FloatField(null=True, blank=True, default=0)
     person = models.ForeignKey(Profile, on_delete=models.CASCADE)
     name = models.CharField(max_length=50, choices=MEAL_CHOICES, default='breakfast')
 

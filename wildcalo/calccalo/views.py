@@ -127,9 +127,18 @@ def meals(request):
             prot_to_add = round((weight / 100) * obj.prot, 1)
             carb_to_add = round((weight / 100) * obj.carb, 1)
             fat_to_add = round((weight / 100) * obj.fat, 1)
-            MealsProducts.objects.create(weight=weight_to_add, name=product_name_to_add, kcal=kcal_to_add,
-                                         prot=prot_to_add, carb=carb_to_add, fat=fat_to_add,
-                                         meal_id=meal_id.id)
+            print(f"Dodam wartosci odzywcze do {meal_id}")
+            meal_id.kcal +=  kcal_to_add
+            meal_id.prot += prot_to_add
+            meal_id.carb += carb_to_add
+            meal_id.fat += fat_to_add
+            meal_id.save()
+
+
+            # MealsProducts.objects.create(weight=weight_to_add, name=product_name_to_add, kcal=kcal_to_add,
+            #                              prot=prot_to_add, carb=carb_to_add, fat=fat_to_add,
+            #                              meal_id=meal_id.id)
+
 
             return HttpResponseRedirect(request.path_info)
 
