@@ -18,7 +18,7 @@ class MealsProductsAdmin(admin.ModelAdmin):
 
 @admin.register(MealsProducts)
 class MealsProductsAdmin(admin.ModelAdmin):
-    list_display = ('name', 'meal','weight', 'kcal', 'carb', 'prot', 'fat')
+    list_display = ('meal', 'name', 'weight', 'kcal', 'carb', 'prot', 'fat')
 
 @admin.register(UserProducts)
 class UserProductsAdmin(admin.ModelAdmin):

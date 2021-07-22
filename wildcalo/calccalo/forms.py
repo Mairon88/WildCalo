@@ -36,26 +36,52 @@ class ProfileForm(forms.ModelForm):
     physical_activity = forms.CharField(widget=forms.Select(choices=Profile.ACTIVITY_CHOICES))
     time = forms.IntegerField()
 
-class MealsProductsForm(forms.ModelForm):
-
+class BreakfastProductsForm(forms.ModelForm):
     class Meta:
         model = MealsProducts
         fields = ('weight',)
 
-    weight_b = forms.FloatField()
-    product_b = forms.ModelChoiceField(queryset=Products.objects.all())
+    weightb= forms.FloatField()
+    productb= forms.ModelChoiceField(queryset=Products.objects.all())
 
-    weight_b2 = forms.FloatField()
-    product_b2 = forms.ModelChoiceField(queryset=Products.objects.all())
+class Breakfast2ProductsForm(forms.ModelForm):
+    class Meta:
+        model = MealsProducts
+        fields = ('weight',)
 
-    weight_d = forms.FloatField()
-    product_d = forms.ModelChoiceField(queryset=Products.objects.all())
+    weightb2= forms.FloatField()
+    productb2= forms.ModelChoiceField(queryset=Products.objects.all())
 
-    weight_l = forms.FloatField()
-    product_l = forms.ModelChoiceField(queryset=Products.objects.all())
+class LunchProductsForm(forms.ModelForm):
+    class Meta:
+        model = MealsProducts
+        fields = ('weight',)
 
-    weight_su = forms.FloatField()
-    product_su = forms.ModelChoiceField(queryset=Products.objects.all())
+    weightl= forms.FloatField()
+    productl= forms.ModelChoiceField(queryset=Products.objects.all())
 
-    weight_sn = forms.FloatField()
-    product_sn = forms.ModelChoiceField(queryset=Products.objects.all())
+class DinnerProductsForm(forms.ModelForm):
+    class Meta:
+        model = MealsProducts
+        fields = ('weight',)
+
+    weightd= forms.FloatField()
+    productd= forms.ModelChoiceField(queryset=Products.objects.all())
+
+class SupperProductsForm(forms.ModelForm):
+    class Meta:
+        model = MealsProducts
+        fields = ('weight',)
+
+    weightsu= forms.FloatField()
+    productsu= forms.ModelChoiceField(queryset=Products.objects.all())
+
+class SnacksProductsForm(forms.ModelForm):
+    class Meta:
+        model = MealsProducts
+        fields = ('weight',)
+
+    weightsn= forms.FloatField()
+    productsn= forms.ModelChoiceField(queryset=Products.objects.all())
+
+

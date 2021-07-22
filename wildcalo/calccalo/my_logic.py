@@ -1,4 +1,5 @@
-from .models import Profile, Meals
+from .models import Profile, Meals, Products
+from django.http import HttpResponseRedirect
 
 class HarrisBededictEquation:
 
@@ -138,7 +139,6 @@ def create_meals(profile):
         Meals.objects.create(person=profile, name='supper')
     if not snacks:
         Meals.objects.create(person=profile, name='snacks')
-
 
 
 
