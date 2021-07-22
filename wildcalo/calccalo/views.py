@@ -95,22 +95,25 @@ def settings(request):
 @login_required
 def meals(request):
 
-    user = request.user
     profile = request.user.profile
-    create_meals(profile)
+    create_meals(profile) # functions creates a meals fater click add a meals.
 
     today = datetime.date.today()
     products = Products.objects.all()
 
     weight_form = MealsProductsForm(data=request.GET)
+
     if weight_form.is_valid():
-        weight = int(request.GET['weight'])
-        product_id = request.GET['product']
+        print("jest ")
+        weight = int(request.GET['weight_b'])
+        product_id = request.GET['product_b']
+
         obj = Products.objects.get(pk=product_id)
+        print(weight, obj)
         product_to_save = [weight, obj.name, round((weight/100)*obj.kcal,1), round((weight/100)*obj.prot,1),
                            round((weight/100)*obj.carb,1), round((weight/100)*obj.fat,1)]
         MealsProducts.objects.create(weight=1000.0,name='Sraka', kcal=233.0, prot=233.0, carb=233.0, fat=233.0, meal_id=2)
-        return HttpResponseRedirect(request.path_info)
+        return HttpResponseRedirect(request.path.info)
     return render(request,
                   'account/meals.html',
                   {'products':products,

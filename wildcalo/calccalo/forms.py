@@ -37,9 +37,25 @@ class ProfileForm(forms.ModelForm):
     time = forms.IntegerField()
 
 class MealsProductsForm(forms.ModelForm):
+
     class Meta:
         model = MealsProducts
         fields = ('weight',)
 
-    weight = forms.FloatField()
-    product = forms.ModelChoiceField(queryset=Products.objects.all())
+    weight_b = forms.FloatField()
+    product_b = forms.ModelChoiceField(queryset=Products.objects.all())
+
+    weight_b2 = forms.FloatField()
+    product_b2 = forms.ModelChoiceField(queryset=Products.objects.all())
+
+    weight_d = forms.FloatField()
+    product_d = forms.ModelChoiceField(queryset=Products.objects.all())
+
+    weight_l = forms.FloatField()
+    product_l = forms.ModelChoiceField(queryset=Products.objects.all())
+
+    weight_su = forms.FloatField()
+    product_su = forms.ModelChoiceField(queryset=Products.objects.all())
+
+    weight_sn = forms.FloatField()
+    product_sn = forms.ModelChoiceField(queryset=Products.objects.all())

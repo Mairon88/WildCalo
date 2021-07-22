@@ -8,36 +8,43 @@
             <div class="today">{{ today }}</div>
             <p>Breakfast</p>
             <form action="." method="get">
-                {{ weight_form.weight }}
-                {{ weight_form.product }}
+                {{ weight_form.weight_b }}
+                {{ weight_form.product_b }}
                 {% csrf_token %}
                 <input type="submit" value="click">
             </form>
             <p>II Breakfast</p>
             <form action="." method="get">
-                {{ weight_form.weight }}
-                {{ weight_form.product }}
+                {{ weight_form.weight_b2 }}
+                {{ weight_form.product_b2 }}
                 {% csrf_token %}
                 <input type="submit" value="click">
             </form>
             <p>Lunch</p>
             <form action="." method="get">
-                {{ weight_form.weight }}
-                {{ weight_form.product }}
+                {{ weight_form.weight_l }}
+                {{ weight_form.product_l }}
                 {% csrf_token %}
                 <input type="submit" value="click">
             </form>
             <p>Dinner</p>
             <form action="." method="get">
-                {{ weight_form.weight }}
-                {{ weight_form.product }}
+                {{ weight_form.weight_d }}
+                {{ weight_form.product_d }}
                 {% csrf_token %}
                 <input type="submit" value="click">
             </form>
             <p>Supper</p>
             <form action="." method="get">
-                {{ weight_form.weight }}
-                {{ weight_form.product }}
+                {{ weight_form.weight_su }}
+                {{ weight_form.product_su }}
+                {% csrf_token %}
+                <input type="submit" value="click">
+            </form>
+            <p>Snucks</p>
+            <form action="." method="get">
+                {{ weight_form.weight_sn }}
+                {{ weight_form.product_sn }}
                 {% csrf_token %}
                 <input type="submit" value="click">
             </form>
