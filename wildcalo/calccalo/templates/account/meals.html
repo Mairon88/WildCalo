@@ -12,6 +12,7 @@
                 {{ breakfast_form.productb }}
                 {% csrf_token %}
                 <input type="submit" value="click">
+                <p>kcal:{{breakfast_kcal}},carb:{{breakfast_carb}}, prot:{{breakfast_prot}}, fat:{{breakfast_fat}}</p>
             </form>
             <p>II Breakfast</p>
             <form action="." method="get">
@@ -19,6 +20,7 @@
                 {{ breakfast2_form.productb2 }}
                 {% csrf_token %}
                 <input type="submit" value="click">
+                <p>kcal:{{breakfast_2_kcal}},carb:{{breakfast_2_carb}}, prot:{{breakfast_2_prot}},fat:{{breakfast_2_fat}}</p>
             </form>
             <p>Lunch</p>
             <form action="." method="get">
@@ -26,6 +28,7 @@
                 {{ lunch_form.productl }}
                 {% csrf_token %}
                 <input type="submit" value="click">
+                <p>kcal:{{lunch_kcal}},carb:{{lunch_carb}}, prot:{{lunch_prot}}, fat:{{lunch_fat}}</p>
             </form>
             <p>Dinner</p>
             <form action="." method="get">
@@ -33,6 +36,7 @@
                 {{ dinner_form.productd }}
                 {% csrf_token %}
                 <input type="submit" value="click">
+                <p>kcal:{{dinner_kcal}},carb:{{dinner_carb}}, prot:{{dinner_prot}}, fat:{{dinner_fat}}</p>
             </form>
             <p>Supper</p>
             <form action="." method="get">
@@ -40,6 +44,7 @@
                 {{ supper_form.productsu }}
                 {% csrf_token %}
                 <input type="submit" value="click">
+                <p>kcal:{{supper_kcal}},carb:{{supper_carb}}, prot:{{supper_prot}}, fat:{{supper_fat}}</p>
             </form>
             <p>Snacks</p>
             <form action="." method="get">
@@ -47,6 +52,7 @@
                 {{ snacks_form.productsn }}
                 {% csrf_token %}
                 <input type="submit" value="click">
+                <p>kcal:{{snacks_kcal}},carb:{{snacks_carb}}, prot:{{snacks_prot}}, fat:{{snacks_fat}}</p>
             </form>
         {% endif %}
         <div class="back_save">

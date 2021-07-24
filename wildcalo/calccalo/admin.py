@@ -4,13 +4,13 @@ from .models import Profile, Meals, Products, MealsProducts, UserProducts
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ('user', 'gender', 'age', 'weight', 'height', 'physical_activity', 'new_weight', 'time')
+    list_display = ('user', 'gender', 'age', 'weight', 'height', 'physical_activity', 'new_weight', 'time', 'kcal', 'carb', 'prot', 'fat')
     list_filter = ('gender', 'physical_activity', 'time')
 
 
 @admin.register(Meals)
 class MealsAdmin(admin.ModelAdmin):
-    list_display = ('person', 'name', 'kcal', 'prot', 'carb', 'fat')
+    list_display = ('person', 'name', 'kcal', 'carb', 'prot', 'fat')
 
 @admin.register(Products)
 class MealsProductsAdmin(admin.ModelAdmin):
