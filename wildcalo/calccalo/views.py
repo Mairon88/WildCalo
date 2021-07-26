@@ -10,6 +10,7 @@ from .my_logic import HarrisBededictEquation, NutritionalValues, create_meals
 from .models import Profile, Products, MealsProducts, Meals
 from django.http import HttpResponseRedirect
 import datetime
+from django.db.models import Sum
 
 
 @login_required
@@ -24,18 +25,11 @@ def dashboard(request):
 
     profile = request.user.profile
 
-    profile.kcal = 0
-    profile.prot = 0
-    profile.carb = 0
-    profile.fat = 0
+    profile.kcal = Meals.objects.filter(person=profile).aggregate(Sum('kcal'))['kcal__sum']
+    profile.prot = Meals.objects.filter(person=profile).aggregate(Sum('carb'))['carb__sum']
+    profile.carb = Meals.objects.filter(person=profile).aggregate(Sum('prot'))['prot__sum']
+    profile.fat = Meals.objects.filter(person=profile).aggregate(Sum('fat'))['fat__sum']
     profile.save()
-
-    for i in Meals.objects.filter(person=profile.id):
-        profile.kcal += i.kcal
-        profile.prot += i.prot
-        profile.carb += i.carb
-        profile.fat += i.fat
-        profile.save()
 
 
     return render(request,
@@ -170,18 +164,19 @@ def meals(request):
 
             return HttpResponseRedirect(request.path_info)
 
+
+    #Ta pętla i każda inna, która coś dodaje zmienić na pobieranie listy konkretnych wartosci np. wszystkie posiłki śniadanie i kcal. zastosować sum(lista)
     for meal in Meals.objects.filter(person=profile):
-        meal.kcal = 0
-        meal.carb = 0
-        meal.prot = 0
-        meal.fat = 0
+        meal.kcal = MealsProducts.objects.filter(meal=meal).aggregate(Sum('kcal'))['kcal__sum']
+        meal.carb = MealsProducts.objects.filter(meal=meal).aggregate(Sum('carb'))['carb__sum']
+        meal.prot = MealsProducts.objects.filter(meal=meal).aggregate(Sum('prot'))['prot__sum']
+        meal.fat = MealsProducts.objects.filter(meal=meal).aggregate(Sum('fat'))['fat__sum']
+        if (meal.kcal or meal.carb or meal.prot or meal.fat) is None:
+            meal.kcal = 0
+            meal.carb = 0
+            meal.prot = 0
+            meal.fat = 0
         meal.save()
-        for product in MealsProducts.objects.filter(meal=meal):
-            meal.kcal += product.kcal
-            meal.carb += product.carb
-            meal.prot += product.prot
-            meal.fat += product.fat
-            meal.save()
 
     breakfast_kcal = Meals.objects.get(person=profile, name='breakfast').kcal
     breakfast_carb = Meals.objects.get(person=profile, name='breakfast').carb
@@ -212,6 +207,18 @@ def meals(request):
     snacks_carb = Meals.objects.get(person=profile, name='snacks').carb
     snacks_prot = Meals.objects.get(person=profile, name='snacks').prot
     snacks_fat = Meals.objects.get(person=profile, name='snacks').fat
+
+    breakfast_products = MealsProducts.objects.filter(meal=Meals.objects.get(person=profile, name='breakfast'))
+    breakfast_2_products = MealsProducts.objects.filter(meal=Meals.objects.get(person=profile, name='breakfast_2'))
+    lunch_products = MealsProducts.objects.filter(meal=Meals.objects.get(person=profile, name='lunch'))
+    dinner_products = MealsProducts.objects.filter(meal=Meals.objects.get(person=profile, name='dinner'))
+    supper_products = MealsProducts.objects.filter(meal=Meals.objects.get(person=profile, name='supper'))
+    snacks_products = MealsProducts.objects.filter(meal=Meals.objects.get(person=profile, name='snacks'))
+
+    if request.method == "POST" and request.POST.get('delete_items'):
+        items_to_delete = request.POST.getlist('delete_items')
+        MealsProducts.objects.filter(pk__in=items_to_delete).delete()
+        return HttpResponseRedirect(request.path_info)
 
     return render(request,
                   'account/meals.html',
@@ -247,6 +254,12 @@ def meals(request):
                    'snacks_carb': snacks_carb,
                    'snacks_prot': snacks_prot,
                    'snacks_fat': snacks_fat,
+                   'breakfast_products':breakfast_products,
+                   'breakfast_2_products': breakfast_2_products,
+                   'lunch_products': lunch_products,
+                   'dinner_products': dinner_products,
+                   'supper_products': supper_products,
+                   'snacks_products': snacks_products,
                    }
                   )
 

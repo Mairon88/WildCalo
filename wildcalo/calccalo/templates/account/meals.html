@@ -11,15 +11,26 @@
                 {{ breakfast_form.weightb }}
                 {{ breakfast_form.productb }}
                 {% csrf_token %}
-                <input type="submit" value="click">
+                <input type="submit" value="add">
+                 <hr>
+
                 <p>kcal:{{breakfast_kcal}},carb:{{breakfast_carb}}, prot:{{breakfast_prot}}, fat:{{breakfast_fat}}</p>
             </form>
+                {% for product in breakfast_products %}
+                    {{ product.name }}
+                    <div class="del"><form method="POST">
+                        <button name="delete_items" type="submit" value="{{ product.pk }}">X</button>
+                        {% csrf_token %}
+                    </form></div>
+                    <hr>
+                {% endfor %}
+            <hr><hr>
             <p>II Breakfast</p>
             <form action="." method="get">
                 {{ breakfast2_form.weightb2 }}
                 {{ breakfast2_form.productb2 }}
                 {% csrf_token %}
-                <input type="submit" value="click">
+                <input type="submit" value="add">
                 <p>kcal:{{breakfast_2_kcal}},carb:{{breakfast_2_carb}}, prot:{{breakfast_2_prot}},fat:{{breakfast_2_fat}}</p>
             </form>
             <p>Lunch</p>
@@ -27,7 +38,7 @@
                 {{ lunch_form.weightl }}
                 {{ lunch_form.productl }}
                 {% csrf_token %}
-                <input type="submit" value="click">
+                <input type="submit" value="add">
                 <p>kcal:{{lunch_kcal}},carb:{{lunch_carb}}, prot:{{lunch_prot}}, fat:{{lunch_fat}}</p>
             </form>
             <p>Dinner</p>
@@ -35,7 +46,7 @@
                 {{ dinner_form.weightd }}
                 {{ dinner_form.productd }}
                 {% csrf_token %}
-                <input type="submit" value="click">
+                <input type="submit" value="add">
                 <p>kcal:{{dinner_kcal}},carb:{{dinner_carb}}, prot:{{dinner_prot}}, fat:{{dinner_fat}}</p>
             </form>
             <p>Supper</p>
@@ -43,7 +54,7 @@
                 {{ supper_form.weightsu }}
                 {{ supper_form.productsu }}
                 {% csrf_token %}
-                <input type="submit" value="click">
+                <input type="submit" value="add">
                 <p>kcal:{{supper_kcal}},carb:{{supper_carb}}, prot:{{supper_prot}}, fat:{{supper_fat}}</p>
             </form>
             <p>Snacks</p>
@@ -51,7 +62,7 @@
                 {{ snacks_form.weightsn }}
                 {{ snacks_form.productsn }}
                 {% csrf_token %}
-                <input type="submit" value="click">
+                <input type="submit" value="add">
                 <p>kcal:{{snacks_kcal}},carb:{{snacks_carb}}, prot:{{snacks_prot}}, fat:{{snacks_fat}}</p>
             </form>
         {% endif %}
