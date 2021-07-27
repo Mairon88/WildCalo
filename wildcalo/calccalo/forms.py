@@ -42,7 +42,7 @@ class BreakfastProductsForm(forms.ModelForm):
         fields = ('weight',)
 
     weightb= forms.FloatField()
-    productb= forms.ModelChoiceField(queryset=Products.objects.all())
+    productb= forms.ModelChoiceField(queryset=Products.objects.all().order_by('name'))
 
 class Breakfast2ProductsForm(forms.ModelForm):
     class Meta:
@@ -50,7 +50,7 @@ class Breakfast2ProductsForm(forms.ModelForm):
         fields = ('weight',)
 
     weightb2= forms.FloatField()
-    productb2= forms.ModelChoiceField(queryset=Products.objects.all())
+    productb2= forms.ModelChoiceField(queryset=Products.objects.all().order_by('name'))
 
 class LunchProductsForm(forms.ModelForm):
     class Meta:
@@ -58,7 +58,7 @@ class LunchProductsForm(forms.ModelForm):
         fields = ('weight',)
 
     weightl= forms.FloatField()
-    productl= forms.ModelChoiceField(queryset=Products.objects.all())
+    productl= forms.ModelChoiceField(queryset=Products.objects.all().order_by('name'))
 
 class DinnerProductsForm(forms.ModelForm):
     class Meta:
@@ -66,7 +66,7 @@ class DinnerProductsForm(forms.ModelForm):
         fields = ('weight',)
 
     weightd= forms.FloatField()
-    productd= forms.ModelChoiceField(queryset=Products.objects.all())
+    productd= forms.ModelChoiceField(queryset=Products.objects.all().order_by('name'))
 
 class SupperProductsForm(forms.ModelForm):
     class Meta:
@@ -74,7 +74,7 @@ class SupperProductsForm(forms.ModelForm):
         fields = ('weight',)
 
     weightsu= forms.FloatField()
-    productsu= forms.ModelChoiceField(queryset=Products.objects.all())
+    productsu= forms.ModelChoiceField(queryset=Products.objects.all().order_by('name'))
 
 class SnacksProductsForm(forms.ModelForm):
     class Meta:
@@ -82,6 +82,6 @@ class SnacksProductsForm(forms.ModelForm):
         fields = ('weight',)
 
     weightsn= forms.FloatField()
-    productsn= forms.ModelChoiceField(queryset=Products.objects.all())
+    productsn= forms.ModelChoiceField(queryset=Products.objects.all().order_by('name'))
 
 
