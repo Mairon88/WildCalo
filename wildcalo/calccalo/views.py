@@ -11,6 +11,7 @@ from .models import Profile, Products, MealsProducts, Meals
 from django.http import HttpResponseRedirect
 import datetime
 from django.db.models import Sum
+from django.http import JsonResponse
 
 
 @login_required
@@ -219,6 +220,17 @@ def meals(request):
         items_to_delete = request.POST.getlist('delete_items')
         MealsProducts.objects.filter(pk__in=items_to_delete).delete()
         return HttpResponseRedirect(request.path_info)
+
+
+    if 'term' in request.GET:
+        print("Działam")
+        qs = Products.objects.filter(name__icontains=request.GET.get('term'))
+        titles = list()
+        for product in qs:
+            titles.append(product.name)
+        print(titles)
+        # titles = [product.title for product in qs]
+        return JsonResponse(titles, safe=False)
 
     return render(request,
                   'account/meals.html',

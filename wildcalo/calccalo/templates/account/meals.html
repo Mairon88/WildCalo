@@ -5,6 +5,12 @@
 {% block content %}
         {% if request.user.is_authenticated %}
             <h1>Add a meal</h1>
+            <form>
+                <label for="producty">Product</label>
+                <input type="text" name="producty" id="producty">
+            </form>
+
+
             <div class="today">{{ today }}</div>
             <p>Breakfast</p>
             <button onclick="myFunction_breakfast()">Show/Hide</button>
@@ -38,7 +44,7 @@
                 <p>kcal:{{breakfast_2_kcal}},carb:{{breakfast_2_carb}}, prot:{{breakfast_2_prot}},fat:{{breakfast_2_fat}}</p>
             </form>
             <div id="breakfast2_hide_show">
-                {% for product in breakfast_products %}
+                {% for product in breakfast_2_products %}
                     {{ product.name }}
                     <div class="del"><form method="POST">
                         <button name="delete_items" type="submit" value="{{ product.pk }}">X</button>
@@ -59,7 +65,7 @@
                 <p>kcal:{{lunch_kcal}},carb:{{lunch_carb}}, prot:{{lunch_prot}}, fat:{{lunch_fat}}</p>
             </form>
             <div id="lunch_hide_show">
-                {% for product in breakfast_products %}
+                {% for product in lunch_products %}
                     {{ product.name }}
                     <div class="del"><form method="POST">
                         <button name="delete_items" type="submit" value="{{ product.pk }}">X</button>
@@ -79,7 +85,7 @@
                 <p>kcal:{{dinner_kcal}},carb:{{dinner_carb}}, prot:{{dinner_prot}}, fat:{{dinner_fat}}</p>
             </form>
             <div id="dinner_hide_show">
-                {% for product in breakfast_products %}
+                {% for product in dinner_products %}
                     {{ product.name }}
                     <div class="del"><form method="POST">
                         <button name="delete_items" type="submit" value="{{ product.pk }}">X</button>
@@ -99,7 +105,7 @@
                 <p>kcal:{{supper_kcal}},carb:{{supper_carb}}, prot:{{supper_prot}}, fat:{{supper_fat}}</p>
             </form>
             <div id="supper_hide_show">
-                {% for product in breakfast_products %}
+                {% for product in supper_products %}
                     {{ product.name }}
                     <div class="del"><form method="POST">
                         <button name="delete_items" type="submit" value="{{ product.pk }}">X</button>
@@ -119,7 +125,7 @@
                 <p>kcal:{{snacks_kcal}},carb:{{snacks_carb}}, prot:{{snacks_prot}}, fat:{{snacks_fat}}</p>
             </form>
             <div id="snacks_hide_show">
-                {% for product in breakfast_products %}
+                {% for product in snacks_products %}
                     {{ product.name }}
                     <div class="del"><form method="POST">
                         <button name="delete_items" type="submit" value="{{ product.pk }}">X</button>

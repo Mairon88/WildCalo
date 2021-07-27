@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from .models import Profile, MealsProducts, Products
 from django.forms.widgets import DateInput
+from django.shortcuts import get_object_or_404
 
 class LoginForm(forms.Form):
     username = forms.CharField()
@@ -43,6 +44,13 @@ class BreakfastProductsForm(forms.ModelForm):
 
     weightb= forms.FloatField()
     productb= forms.ModelChoiceField(queryset=Products.objects.all().order_by('name'))
+
+
+
+
+
+
+
 
 class Breakfast2ProductsForm(forms.ModelForm):
     class Meta:
