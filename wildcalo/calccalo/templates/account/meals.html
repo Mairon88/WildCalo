@@ -5,12 +5,6 @@
 {% block content %}
         {% if request.user.is_authenticated %}
             <h1>Add a meal</h1>
-            <form>
-                <label for="producty">Product</label>
-                <input type="text" name="producty" id="producty">
-            </form>
-
-
             <div class="today">{{ today }}</div>
             <p>Breakfast</p>
             <button onclick="myFunction_breakfast()">Show/Hide</button>
@@ -25,7 +19,7 @@
             </form>
             <div id="breakfast_hide_show">
                 {% for product in breakfast_products %}
-                    {{ product.name }}
+                    {{ product.name }} {{ product.kcal }} {{ product.carb }} {{ product.prot }} {{ product.fat }}
                     <div class="del"><form method="POST">
                         <button name="delete_items" type="submit" value="{{ product.pk }}">X</button>
                         {% csrf_token %}
@@ -45,7 +39,7 @@
             </form>
             <div id="breakfast2_hide_show">
                 {% for product in breakfast_2_products %}
-                    {{ product.name }}
+                    {{ product.name }} {{ product.kcal }} {{ product.carb }} {{ product.prot }} {{ product.fat }}
                     <div class="del"><form method="POST">
                         <button name="delete_items" type="submit" value="{{ product.pk }}">X</button>
                         {% csrf_token %}
@@ -66,7 +60,7 @@
             </form>
             <div id="lunch_hide_show">
                 {% for product in lunch_products %}
-                    {{ product.name }}
+                    {{ product.name }} {{ product.kcal }} {{ product.carb }} {{ product.prot }} {{ product.fat }}
                     <div class="del"><form method="POST">
                         <button name="delete_items" type="submit" value="{{ product.pk }}">X</button>
                         {% csrf_token %}
@@ -86,7 +80,7 @@
             </form>
             <div id="dinner_hide_show">
                 {% for product in dinner_products %}
-                    {{ product.name }}
+                    {{ product.name }} {{ product.kcal }} {{ product.carb }} {{ product.prot }} {{ product.fat }}
                     <div class="del"><form method="POST">
                         <button name="delete_items" type="submit" value="{{ product.pk }}">X</button>
                         {% csrf_token %}
@@ -106,7 +100,7 @@
             </form>
             <div id="supper_hide_show">
                 {% for product in supper_products %}
-                    {{ product.name }}
+                    {{ product.name }} {{ product.kcal }} {{ product.carb }} {{ product.prot }} {{ product.fat }}
                     <div class="del"><form method="POST">
                         <button name="delete_items" type="submit" value="{{ product.pk }}">X</button>
                         {% csrf_token %}
@@ -126,7 +120,7 @@
             </form>
             <div id="snacks_hide_show">
                 {% for product in snacks_products %}
-                    {{ product.name }}
+                    {{ product.name }} {{ product.kcal }} {{ product.carb }} {{ product.prot }} {{ product.fat }}
                     <div class="del"><form method="POST">
                         <button name="delete_items" type="submit" value="{{ product.pk }}">X</button>
                         {% csrf_token %}

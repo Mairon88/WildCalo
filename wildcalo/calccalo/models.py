@@ -17,6 +17,7 @@ class Profile(models.Model):
 
     STATUS_CHOICES = {
         ('waiting','Waiting'),
+        ('ready', 'Ready'),
         ('ongoing','Ongoing')
     }
 

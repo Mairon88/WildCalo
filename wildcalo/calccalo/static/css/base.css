@@ -566,6 +566,12 @@ a {
         text-align: center;
         font-size: 6vw;
     }
+
+    #breakfast_hide_show, #breakfast2_hide_show, #dinner_hide_show, #supper_hide_show, #snacks_hide_show {
+    display: none;
+    }
+
+
 }
 
 

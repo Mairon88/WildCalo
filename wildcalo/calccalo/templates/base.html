@@ -98,11 +98,14 @@
 
     <script>
         $(function () {
-            $("#producty").autocomplete({
+            $("#id_productb, #id_productb2, #id_productl, #id_productd, #id_productsn, #id_productsu" ).autocomplete({
                 source: '{% url 'meals' %}',
                 minLength: 2
             });
         });
+
+
+
     </script>
 
 </body>

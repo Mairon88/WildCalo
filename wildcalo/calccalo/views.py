@@ -30,9 +30,18 @@ def dashboard(request):
     profile.prot = Meals.objects.filter(person=profile).aggregate(Sum('carb'))['carb__sum']
     profile.carb = Meals.objects.filter(person=profile).aggregate(Sum('prot'))['prot__sum']
     profile.fat = Meals.objects.filter(person=profile).aggregate(Sum('fat'))['fat__sum']
+
+    if (profile.kcal or profile.prot or  profile.carb or profile.fat) is None:
+        profile.kcal = 0
+        profile.prot = 0
+        profile.carb = 0
+        profile.fat = 0
+
     profile.save()
 
-
+    if request.method == 'POST':
+        profile.status = 'ongoing'
+        profile.save()
     return render(request,
                   'account/dashboard.html',
                   {'section': 'dashboard',
@@ -45,7 +54,7 @@ def dashboard(request):
                    'prot': profile.prot,
                    'carb': profile.carb,
                    'fat': profile.fat,
-
+                   'person_status': profile.status,
                    })
 
 def register(request):
@@ -78,6 +87,7 @@ def settings(request):
         bm = calculate.basic_metabolism()
         dd_dcl = calculate.calculate_deficit()
         person.daily_calory_limit = dd_dcl[1]
+        person.status = 'ready'
         person.save()
         def_percent = calculate.is_deficit_to_big()
 
@@ -94,6 +104,7 @@ def settings(request):
         def_percent = calculate.is_deficit_to_big()
 
 
+
     return render(request,
                   'account/settings.html',
                   {'profile_form': profile_form,
@@ -106,6 +117,7 @@ def settings(request):
                    'def_percent': def_percent,
                    'weight': person.weight,
                    'new_weight': person.new_weight,
+
                    })
 
 
@@ -137,7 +149,9 @@ def meals(request):
         if form[0].is_valid():
             weight = int(request.GET[form[2]])
             product_id = request.GET[form[3]]
-            obj = Products.objects.get(pk=product_id)
+            id_prod = Products.objects.get(name=product_id).id
+            obj = Products.objects.get(pk=id_prod)
+
             meal_id = Meals.objects.get(person=profile, name=form[1])
 
             weight_to_add = weight
@@ -228,7 +242,7 @@ def meals(request):
         titles = list()
         for product in qs:
             titles.append(product.name)
-        print(titles)
+
         # titles = [product.title for product in qs]
         return JsonResponse(titles, safe=False)
 

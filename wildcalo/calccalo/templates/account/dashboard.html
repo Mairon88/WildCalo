@@ -8,13 +8,18 @@
 
                 <div class="boar_cal">
                     <div class="boar_with_carrot"><img src="/media/boar_with_carrot.png"></div>
-                    {% if days >= 14 and days <= 90 %}
+                    {% if days >= 14 and days <= 90 and person_status == 'ongoing' %}
                         <div class="calendar"><p>{{days}}</p>
+                    {% elif person_status == 'ready' %}
+                        <div class="calendar">
+                            <form action="." method="post">
+                                <input type="image" src="/media/start.png" />
+                                {% csrf_token %}
+                            </form>
                     {% else %}
                         <div class="calendar"><p>XX</p>
                     {% endif %}
                         <img src="/media/calendar.png"></div>
-
                 </div>
                 <div class="settings_meal">
                     <div class="settings_div">
@@ -53,7 +58,7 @@
 
                             <div class="box">
                               <p class="prot">{{ prot }}</p>
-                               <hr class="prot">
+                               <hr class="hr_prot">
                               <p class="prot">{{limit_prot}}</p>
                                 <hr class="prot">
                               <p class="prot">prot [g]</p>
@@ -63,7 +68,7 @@
 
                             <div class="box">
                               <p class="fat">{{ fat }}</p>
-                               <hr class="fat">
+                               <hr class="hr_fat">
                               <p class="fat">{{limit_fat}}</p>
                                 <hr class="fat">
                               <p class="fat">fat [g]</p>

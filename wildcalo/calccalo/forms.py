@@ -43,13 +43,7 @@ class BreakfastProductsForm(forms.ModelForm):
         fields = ('weight',)
 
     weightb= forms.FloatField()
-    productb= forms.ModelChoiceField(queryset=Products.objects.all().order_by('name'))
-
-
-
-
-
-
+    productb= forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Name of product'}))
 
 
 class Breakfast2ProductsForm(forms.ModelForm):
@@ -58,7 +52,7 @@ class Breakfast2ProductsForm(forms.ModelForm):
         fields = ('weight',)
 
     weightb2= forms.FloatField()
-    productb2= forms.ModelChoiceField(queryset=Products.objects.all().order_by('name'))
+    productb2= forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Name of product'}))
 
 class LunchProductsForm(forms.ModelForm):
     class Meta:
@@ -66,7 +60,7 @@ class LunchProductsForm(forms.ModelForm):
         fields = ('weight',)
 
     weightl= forms.FloatField()
-    productl= forms.ModelChoiceField(queryset=Products.objects.all().order_by('name'))
+    productl= forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Name of product'}))
 
 class DinnerProductsForm(forms.ModelForm):
     class Meta:
@@ -74,7 +68,7 @@ class DinnerProductsForm(forms.ModelForm):
         fields = ('weight',)
 
     weightd= forms.FloatField()
-    productd= forms.ModelChoiceField(queryset=Products.objects.all().order_by('name'))
+    productd= forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Name of product'}))
 
 class SupperProductsForm(forms.ModelForm):
     class Meta:
@@ -82,7 +76,7 @@ class SupperProductsForm(forms.ModelForm):
         fields = ('weight',)
 
     weightsu= forms.FloatField()
-    productsu= forms.ModelChoiceField(queryset=Products.objects.all().order_by('name'))
+    productsu= forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Name of product'}))
 
 class SnacksProductsForm(forms.ModelForm):
     class Meta:
@@ -90,6 +84,6 @@ class SnacksProductsForm(forms.ModelForm):
         fields = ('weight',)
 
     weightsn= forms.FloatField()
-    productsn= forms.ModelChoiceField(queryset=Products.objects.all().order_by('name'))
+    productsn= forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Name of product'}))
 
 
