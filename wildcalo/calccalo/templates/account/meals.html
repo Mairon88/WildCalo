@@ -5,6 +5,7 @@
 {% block content %}
         {% if request.user.is_authenticated %}
             <h1>Add a meal</h1>
+            <p>{{message}}</p>
             <div class="today">{{ today }}</div>
             <p>Breakfast</p>
             <button onclick="myFunction_breakfast()">Show/Hide</button>

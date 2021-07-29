@@ -38,10 +38,13 @@ class Profile(models.Model):
     end_date = models.DateField(null=True, blank=True)
 
     time = models.IntegerField(null=True, blank=True)
+    days_left = models.IntegerField(null=True, blank=True)
+    mem_today = models.DateField(null=True, blank=True)
     ppm = models.FloatField(null=True, blank=True)
     tdee = models.FloatField(null=True, blank=True)
     deficit = models.IntegerField(null=True, blank=True)
     daily_calory_limit = models.IntegerField(null=True, blank=True, default=0)
+    new_day = models.BooleanField(default=False)
 
     kcal = models.IntegerField(null=True, blank=True, default=0)
     prot = models.IntegerField(null=True, blank=True, default=0)

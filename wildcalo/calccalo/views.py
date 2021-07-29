@@ -22,7 +22,7 @@ def dashboard(request):
     request.user.profile.limit_prot = nutritional_values.prot_value()
     request.user.profile.limit_fat = nutritional_values.fat_value()
 
-    days = request.user.profile.time
+    time = request.user.profile.time
 
     profile = request.user.profile
 
@@ -39,13 +39,45 @@ def dashboard(request):
 
     profile.save()
 
+
     if request.method == 'POST':
         profile.status = 'ongoing'
+        today = datetime.date.today()
+        profile.mem_today = today
+        days_time = datetime.timedelta(days=time)
+        end = today + days_time
+        profile.end_date = end
+        profile.days_left = abs((end - today).days)
         profile.save()
+
+    if profile.days_left is not None:
+        today = datetime.date.today()
+
+        if profile.mem_today != today:
+
+            meal = Meals.objects.filter(person=profile.id)
+            meal.delete()
+            profile.mem_today = today
+            profile.save()
+            return HttpResponseRedirect(request.path_info)
+
+        profile.days_left = abs((profile.end_date - today).days)
+        profile.save()
+
+    if profile.days_left == 0:
+        profile.status = 'waiting'
+        profile.time = None
+        profile.weight = None
+        profile.new_weight = None
+        meal = Meals.objects.filter(person=profile.id)
+        meal.delete()
+        profile.save()
+        return HttpResponseRedirect(request.path_info)
+
     return render(request,
                   'account/dashboard.html',
                   {'section': 'dashboard',
-                   'days': days,
+                   'days': profile.days_left,
                    'limit_carb':request.user.profile.limit_carb,
                    'limit_prot': request.user.profile.limit_prot,
                    'limit_fat': request.user.profile.limit_fat,
@@ -144,29 +176,32 @@ def meals(request):
 
 
 
+    message=''
 
     for form in forms: # this loop allows to shorten code
         if form[0].is_valid():
             weight = int(request.GET[form[2]])
-            product_id = request.GET[form[3]]
-            id_prod = Products.objects.get(name=product_id).id
-            obj = Products.objects.get(pk=id_prod)
+            product_id = request.GET[form[3]].title()
+            try:
+                id_prod = Products.objects.get(name=product_id).id
+                obj = Products.objects.get(pk=id_prod)
+                print(product_id, id_prod, obj)
 
-            meal_id = Meals.objects.get(person=profile, name=form[1])
 
-            weight_to_add = weight
-            product_name_to_add = obj.name
-            kcal_to_add = round((weight / 100) * obj.kcal,1)
-            prot_to_add = round((weight / 100) * obj.prot, 1)
-            carb_to_add = round((weight / 100) * obj.carb, 1)
-            fat_to_add = round((weight / 100) * obj.fat, 1)
+                meal_id = Meals.objects.get(person=profile, name=form[1])
 
-            meal_id.kcal +=  kcal_to_add
-            meal_id.prot += prot_to_add
-            meal_id.carb += carb_to_add
-            meal_id.fat += fat_to_add
-            meal_id.save()
+                weight_to_add = weight
+                product_name_to_add = obj.name
+                kcal_to_add = round((weight / 100) * obj.kcal,1)
+                prot_to_add = round((weight / 100) * obj.prot, 1)
+                carb_to_add = round((weight / 100) * obj.carb, 1)
+                fat_to_add = round((weight / 100) * obj.fat, 1)
 
+                meal_id.kcal +=  kcal_to_add
+                meal_id.prot += prot_to_add
+                meal_id.carb += carb_to_add
+                meal_id.fat += fat_to_add
+                meal_id.save()
 
 
             # dodać do konkretnego posilku ale i do ogolnego kcal uzytkownika
@@ -174,10 +209,12 @@ def meals(request):
             # ze wszystkich posiklow. Bo jak trzeba bedzie cos usunac to wtedy wystarycz usunac produkt i juz
             # nie mozna zapisywac wyniku do... bo pozniej ciezko bedzie to po
 
-            MealsProducts.objects.create(weight=weight_to_add, name=product_name_to_add, kcal=kcal_to_add,
-                                         prot=prot_to_add, carb=carb_to_add, fat=fat_to_add, meal_id=meal_id.id)
+                MealsProducts.objects.create(weight=weight_to_add, name=product_name_to_add, kcal=kcal_to_add,
+                                             prot=prot_to_add, carb=carb_to_add, fat=fat_to_add, meal_id=meal_id.id)
 
-            return HttpResponseRedirect(request.path_info)
+                return HttpResponseRedirect(request.path_info)
+            except:
+                message = "The given product is not on the list of available products or weight is lower or equal 0"
 
 
     #Ta pętla i każda inna, która coś dodaje zmienić na pobieranie listy konkretnych wartosci np. wszystkie posiłki śniadanie i kcal. zastosować sum(lista)
@@ -185,7 +222,7 @@ def meals(request):
         meal.kcal = MealsProducts.objects.filter(meal=meal).aggregate(Sum('kcal'))['kcal__sum']
         meal.carb = MealsProducts.objects.filter(meal=meal).aggregate(Sum('carb'))['carb__sum']
         meal.prot = MealsProducts.objects.filter(meal=meal).aggregate(Sum('prot'))['prot__sum']
-        meal.fat = MealsProducts.objects.filter(meal=meal).aggregate(Sum('fat'))['fat__sum']
+        meal.fat = MealsProducts.objects.filter(meal=meal).aggregate(Sum('prot'))['prot__sum']
         if (meal.kcal or meal.carb or meal.prot or meal.fat) is None:
             meal.kcal = 0
             meal.carb = 0
@@ -193,35 +230,35 @@ def meals(request):
             meal.fat = 0
         meal.save()
 
-    breakfast_kcal = Meals.objects.get(person=profile, name='breakfast').kcal
-    breakfast_carb = Meals.objects.get(person=profile, name='breakfast').carb
-    breakfast_prot = Meals.objects.get(person=profile, name='breakfast').prot
-    breakfast_fat = Meals.objects.get(person=profile, name='breakfast').fat
+    breakfast_kcal = round(Meals.objects.get(person=profile, name='breakfast').kcal,1)
+    breakfast_carb = round(Meals.objects.get(person=profile, name='breakfast').carb,1)
+    breakfast_prot = round(Meals.objects.get(person=profile, name='breakfast').prot,1)
+    breakfast_fat = round(Meals.objects.get(person=profile, name='breakfast').fat,1)
 
-    breakfast_2_kcal = Meals.objects.get(person=profile, name='breakfast_2').kcal
-    breakfast_2_carb = Meals.objects.get(person=profile, name='breakfast_2').carb
-    breakfast_2_prot = Meals.objects.get(person=profile, name='breakfast_2').prot
-    breakfast_2_fat = Meals.objects.get(person=profile, name='breakfast_2').fat
+    breakfast_2_kcal = round(Meals.objects.get(person=profile, name='breakfast_2').kcal,1)
+    breakfast_2_carb = round(Meals.objects.get(person=profile, name='breakfast_2').carb,1)
+    breakfast_2_prot = round(Meals.objects.get(person=profile, name='breakfast_2').prot,1)
+    breakfast_2_fat = round(Meals.objects.get(person=profile, name='breakfast_2').fat,1)
 
-    dinner_kcal = Meals.objects.get(person=profile, name='dinner').kcal
-    dinner_carb = Meals.objects.get(person=profile, name='dinner').carb
-    dinner_prot = Meals.objects.get(person=profile, name='dinner').prot
-    dinner_fat = Meals.objects.get(person=profile, name='dinner').fat
+    dinner_kcal = round(Meals.objects.get(person=profile, name='dinner').kcal,1)
+    dinner_carb = round(Meals.objects.get(person=profile, name='dinner').carb,1)
+    dinner_prot = round(Meals.objects.get(person=profile, name='dinner').prot,1)
+    dinner_fat = round(Meals.objects.get(person=profile, name='dinner').fat,1)
 
-    lunch_kcal = Meals.objects.get(person=profile, name='lunch').kcal
-    lunch_carb = Meals.objects.get(person=profile, name='lunch').carb
-    lunch_prot = Meals.objects.get(person=profile, name='lunch').prot
-    lunch_fat = Meals.objects.get(person=profile, name='lunch').fat
+    lunch_kcal = round(Meals.objects.get(person=profile, name='lunch').kcal,1)
+    lunch_carb = round(Meals.objects.get(person=profile, name='lunch').carb,1)
+    lunch_prot = round(Meals.objects.get(person=profile, name='lunch').prot,1)
+    lunch_fat = round(Meals.objects.get(person=profile, name='lunch').fat,)
 
-    supper_kcal = Meals.objects.get(person=profile, name='supper').kcal
-    supper_carb = Meals.objects.get(person=profile, name='supper').carb
-    supper_prot = Meals.objects.get(person=profile, name='supper').prot
-    supper_fat = Meals.objects.get(person=profile, name='supper').fat
+    supper_kcal = round(Meals.objects.get(person=profile, name='supper').kcal,1)
+    supper_carb = round(Meals.objects.get(person=profile, name='supper').carb,1)
+    supper_prot = round(Meals.objects.get(person=profile, name='supper').prot,1)
+    supper_fat = round(Meals.objects.get(person=profile, name='supper').fat,1)
 
-    snacks_kcal = Meals.objects.get(person=profile, name='snacks').kcal
-    snacks_carb = Meals.objects.get(person=profile, name='snacks').carb
-    snacks_prot = Meals.objects.get(person=profile, name='snacks').prot
-    snacks_fat = Meals.objects.get(person=profile, name='snacks').fat
+    snacks_kcal = round(Meals.objects.get(person=profile, name='snacks').kcal,1)
+    snacks_carb = round(Meals.objects.get(person=profile, name='snacks').carb,1)
+    snacks_prot = round(Meals.objects.get(person=profile, name='snacks').prot,1)
+    snacks_fat = round(Meals.objects.get(person=profile, name='snacks').fat,1)
 
     breakfast_products = MealsProducts.objects.filter(meal=Meals.objects.get(person=profile, name='breakfast'))
     breakfast_2_products = MealsProducts.objects.filter(meal=Meals.objects.get(person=profile, name='breakfast_2'))
@@ -237,7 +274,6 @@ def meals(request):
 
 
     if 'term' in request.GET:
-        print("Działam")
         qs = Products.objects.filter(name__icontains=request.GET.get('term'))
         titles = list()
         for product in qs:
@@ -286,6 +322,7 @@ def meals(request):
                    'dinner_products': dinner_products,
                    'supper_products': supper_products,
                    'snacks_products': snacks_products,
+                   'message': message,
                    }
                   )
 
