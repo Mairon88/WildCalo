@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Dodaj produkt{% endblock %}
+
+{% block content %}
+        <p>Provide nutritional values for a product weighing 100 g</p>
+        <form action="." method="post">
+            {{ user_prod_form.as_p }}
+            {% csrf_token  %}
+            <input type="submit" value="add">
+        </form>
+        <div class="back_save">
+                     <div><a href="{% url 'meals' %}"><img class="back" src="/media/back.png"></a></div>
+        </div>
+{% endblock %}
+
+

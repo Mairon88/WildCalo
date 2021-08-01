@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from .forms import LoginForm, UserRegistrationForm, ProfileForm, BreakfastProductsForm, Breakfast2ProductsForm, \
-    SnacksProductsForm, SupperProductsForm, DinnerProductsForm, LunchProductsForm
+    SnacksProductsForm, SupperProductsForm, DinnerProductsForm, LunchProductsForm, ProductsForm
 from django.contrib.auth.models import User
 from .my_logic import HarrisBededictEquation, NutritionalValues, create_meals
 from .models import Profile, Products, MealsProducts, Meals
@@ -178,6 +178,15 @@ def meals(request):
 
     message=''
 
+    if 'term' in request.GET:
+        qs = Products.objects.filter(name__icontains=request.GET.get('term'))
+        titles = list()
+        for product in qs:
+            if product.active:
+                titles.append(product.name)
+        # titles = [product.title for product in qs]
+        return JsonResponse(titles, safe=False)
+
     for form in forms: # this loop allows to shorten code
         if form[0].is_valid():
             weight = int(request.GET[form[2]])
@@ -185,23 +194,35 @@ def meals(request):
             try:
                 id_prod = Products.objects.get(name=product_id).id
                 obj = Products.objects.get(pk=id_prod)
-                print(product_id, id_prod, obj)
 
+                if obj.active:
 
-                meal_id = Meals.objects.get(person=profile, name=form[1])
+                    if weight <= 0:
+                        message = "Sorry, weight is lower or equal 0, it does not make sense"
+                        break
 
-                weight_to_add = weight
-                product_name_to_add = obj.name
-                kcal_to_add = round((weight / 100) * obj.kcal,1)
-                prot_to_add = round((weight / 100) * obj.prot, 1)
-                carb_to_add = round((weight / 100) * obj.carb, 1)
-                fat_to_add = round((weight / 100) * obj.fat, 1)
+                    meal_id = Meals.objects.get(person=profile, name=form[1])
 
-                meal_id.kcal +=  kcal_to_add
-                meal_id.prot += prot_to_add
-                meal_id.carb += carb_to_add
-                meal_id.fat += fat_to_add
-                meal_id.save()
+                    weight_to_add = weight
+                    product_name_to_add = obj.name
+                    kcal_to_add = round((weight / 100) * obj.kcal,1)
+                    prot_to_add = round((weight / 100) * obj.prot, 1)
+                    carb_to_add = round((weight / 100) * obj.carb, 1)
+                    fat_to_add = round((weight / 100) * obj.fat, 1)
+
+                    meal_id.kcal +=  kcal_to_add
+                    meal_id.prot += prot_to_add
+                    meal_id.carb += carb_to_add
+                    meal_id.fat += fat_to_add
+                    meal_id.save()
+
+                    MealsProducts.objects.create(weight=weight_to_add, name=product_name_to_add, kcal=kcal_to_add,
+                                                 prot=prot_to_add, carb=carb_to_add, fat=fat_to_add, meal_id=meal_id.id)
+
+                    return HttpResponseRedirect(request.path_info)
+
+                else:
+                    message = "Sorry, the given product is not active now"
 
 
             # dodać do konkretnego posilku ale i do ogolnego kcal uzytkownika
@@ -209,12 +230,9 @@ def meals(request):
             # ze wszystkich posiklow. Bo jak trzeba bedzie cos usunac to wtedy wystarycz usunac produkt i juz
             # nie mozna zapisywac wyniku do... bo pozniej ciezko bedzie to po
 
-                MealsProducts.objects.create(weight=weight_to_add, name=product_name_to_add, kcal=kcal_to_add,
-                                             prot=prot_to_add, carb=carb_to_add, fat=fat_to_add, meal_id=meal_id.id)
 
-                return HttpResponseRedirect(request.path_info)
             except:
-                message = "The given product is not on the list of available products or weight is lower or equal 0"
+                message = "The given product is not on the list of available products"
 
 
     #Ta pętla i każda inna, która coś dodaje zmienić na pobieranie listy konkretnych wartosci np. wszystkie posiłki śniadanie i kcal. zastosować sum(lista)
@@ -273,14 +291,7 @@ def meals(request):
         return HttpResponseRedirect(request.path_info)
 
 
-    if 'term' in request.GET:
-        qs = Products.objects.filter(name__icontains=request.GET.get('term'))
-        titles = list()
-        for product in qs:
-            titles.append(product.name)
 
-        # titles = [product.title for product in qs]
-        return JsonResponse(titles, safe=False)
 
     return render(request,
                   'account/meals.html',
@@ -325,4 +336,19 @@ def meals(request):
                    'message': message,
                    }
                   )
+@login_required
+def user_products(request):
+    print("dodajemy produkt")
+    if request.method == 'POST':
+        user_prod_form = ProductsForm(request.POST)
+        if user_prod_form.is_valid():
+            new_user_prod = user_prod_form.save(commit=False)
+            new_user_prod.save()
+            return HttpResponseRedirect(request.path_info)
+    else:
+        user_prod_form = ProductsForm()
+
+    return render(request,
+                  'account/user_products.html',
+                  {'user_prod_form': user_prod_form},)
 

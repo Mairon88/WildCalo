@@ -7,6 +7,7 @@
             <h1>Add a meal</h1>
             <p>{{message}}</p>
             <div class="today">{{ today }}</div>
+            <p>No product? Add it <a href="{% url 'user_products' %}"><span>here</span></a>.</p>
             <p>Breakfast</p>
             <button onclick="myFunction_breakfast()">Show/Hide</button>
             <form action="." method="get">

@@ -16,4 +16,5 @@ urlpatterns = [
     # path('edit/', views.edit, name='edit'),
     path('settings/', views.settings, name='settings'),
     path('meals/', views.meals, name='meals'),
+    path('user_products/', views.user_products, name='user_products'),
 ]

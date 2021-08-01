@@ -112,7 +112,8 @@ class Products(models.Model):
         ('salty snacks','Salty snacks'),
         ('drinks', 'Drinks'),
         ('breads', 'Breads'),
-        ('spices', 'Spices')
+        ('spices', 'Spices'),
+        ('others','Others'),
     ]
     name = models.CharField(max_length=50, unique=True)
     type = models.CharField(max_length=50, choices=TYPE_CHOICES)
@@ -120,22 +121,12 @@ class Products(models.Model):
     carb = models.FloatField()
     prot = models.FloatField()
     fat = models.FloatField()
-    active = models.BooleanField(default=False)
+    active = models.BooleanField(default=True)
+    error = models.IntegerField(default=0)
 
     class Meta:
         verbose_name_plural = 'Products'
 
     def __str__(self):
         return f"{self.name} - {self.kcal} - {self.carb} - {self.prot} - {self.fat}"
-
-class UserProducts(models.Model):
-    name = models.CharField(max_length=50)
-    type = models.CharField(max_length=50)
-    kcal = models.FloatField()
-    carb = models.FloatField()
-    prot = models.FloatField()
-    fat = models.FloatField()
-
-    class Meta:
-        verbose_name_plural = 'User Products'
 
