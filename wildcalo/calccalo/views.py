@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
@@ -12,6 +12,9 @@ from django.http import HttpResponseRedirect
 import datetime
 from django.db.models import Sum
 from django.http import JsonResponse
+from .serializers import ProductsSerializer
+from rest_framework.parsers import JSONParser
+from django.views.decorators.csrf import csrf_exempt
 
 
 @login_required
@@ -351,4 +354,20 @@ def user_products(request):
     return render(request,
                   'account/user_products.html',
                   {'user_prod_form': user_prod_form},)
+
+@csrf_exempt
+def product_list(request):
+    if request.method == 'GET':
+        product = Products.objects.all()
+        serializer = ProductsSerializer(product, many=True)
+        return JsonResponse(serializer.data, safe=False)
+    elif request.method == 'POST':
+        data = JSONParser().parse(request)
+        serializer = ProductsSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=200)
+        return JsonResponse(serializer.errors, status=400)
+
+
 
