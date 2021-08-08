@@ -9,19 +9,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}{% endblock %}</title>
     <link href="{% static 'css/base.css' %}" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Knewave&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Peralta&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ribeye&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body>
     <div class="header">
         {% if not request.user.is_authenticated %}
-            <div class="logo"><img src="/media/logo.png"></div>
+            <div class="logo"><img src="/media/new_logo.png"></div>
         {% else %}
-            <div class="logo2"><img src="/media/logo2.png"></div>
+            <div class="logo2"><img src="/media/new_logo2.png"></div>
         {% endif %}
+
         {% if request.user.is_authenticated %}
             <div class="user">
 
@@ -34,6 +36,7 @@
             </div>
         {% endif %}
     </div>
+    <div class="line"><img src="/media/line.png"></div>
     {% block content %}
     {% endblock %}
 

@@ -1,3 +1,4 @@
+
 /* RESET CSS */
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
@@ -53,20 +54,19 @@ table {
 
 
 /* END OF RESET */
-@import url('https://fonts.googleapis.com/css2?family=Knewave&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Peralta&display=swap');
 body {
         background-color: #757163ff;
         padding-top: 10px;
         padding-bottom: 10px;
         padding-left: 15px;
         padding-right: 15px;
-        font-family: 'Bubblegum Sans', cursive;
+        font-family: 'Peralta', cursive;
         font-size: 28px;
         font-weight: 1000;
-        background-image: url("/media/bg2.png");
+        background-image: url("/media/bg3.jpg");
         background-repeat: repeat;
-        background-size: 360px;
-
+        background-size: 200%;
 
     }
 
@@ -95,32 +95,52 @@ a {
 
     .logo {
         display: flex;
+
         margin-bottom: 5px;
         align-items: center;
         justify-content: space-around;
 
     }
     .logo img {
-        width: 60%;
+        margin-top: 10px;
+        width: 80%;
 
     }
 
-    .logo2 {
-       text-align: left;
+    .line {
+        display: flex;
+
+        margin-bottom: 5px;
+        align-items: center;
+        justify-content: space-around;
+
+    }
+
+    .line img {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        width: 100%;
+
+    }
+
+    .new_logo2 {
+       text-align: center;
        width: 80%;
 
     }
 
-    .logo2 img {
+    .new_logo2 img {
      margin-right: 25%;
         width: 50%;
 
     }
 
     input[type="text"],input[type="number"],input[type="file"],input[type="password"], input[type="email"],select {
-      background-color :#928b67ff;
-      font-size: 24px;
-      font-family: 'Bubblegum Sans', cursive;
+      background-color: transparent;
+      border: solid 2px;
+      border-radius: 25px;
+      font-size: 20px;
+      font-family: 'Peralta', cursive;
       width: 250px;
       text-align: center;
       -webkit-box-sizing:border-box;
@@ -135,26 +155,58 @@ a {
       margin-right: auto;
       line-height: 80%;
       color: black;
-      border: none;
 
     }
 
+       input[type="submit"] {
+      background-color: transparent;
+      border: none;
+      font-size: 85%;
+      font-weight: bold;
+      font-family: 'Peralta', cursive;
+      width: 250px;
+      text-align: center;
+      -webkit-box-sizing:border-box;
+      -moz-box-sizing:border-box;
+      box-sizing:border-box;
+      vertical-align:top;
+      height:35px;
+      display:block;
+      margin-top: 10px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 80%;
+      color: black;
+
+    }
+
+
+
+
+
     .forms{
         text-align: center;
+        font-size: 7vw;
+
     }
 
     .forgot {
         margin-top:5px;
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: center;
+        font-size: 6vw;
     }
     .forgot p {
         padding: 8px;
     }
 
+    .api {
+    font-size: 6vw;
+    }
+
     .login, .send{
-         width: 36%;
+         width: 30%;
     }
     .create {
          width: 70%;
@@ -248,7 +300,6 @@ a {
         margin-bottom: 10%;
         margin-right:10%
 
-
     }
 
         .settings_meal{
@@ -258,8 +309,6 @@ a {
         align-items: center;
         justify-content: space-between;
         margin-bottom: 5%;
-
-
     }
 
         .bars{
@@ -320,7 +369,6 @@ a {
      .settings_meal div{
         text-align: center;
         font-size:7vw;
-
     }
 
     .settings_div {
@@ -392,7 +440,7 @@ a {
     .settings select {
       background-color :#928b67ff;
       font-size: 24px;
-      font-family: 'Bubblegum Sans', cursive;
+      font-family: 'Peralta', cursive;
       width: 250px;
       text-align: center;
       -webkit-box-sizing:border-box;
@@ -571,6 +619,9 @@ a {
     display: none;
     }
 
+    p, h1, h2, a {
+    opacity: 0.7;
+    }
 
 }
 
