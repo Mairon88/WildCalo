@@ -7,32 +7,40 @@
         <div class="menu">
 
                 <div class="boar_cal">
-                    <div class="boar_with_carrot"><img src="/media/boar_with_carrot.png"></div>
-                    {% if days >= 14 and days <= 90 and person_status == 'ongoing' %}
-                        <div class="calendar"><p>{{days}}</p>
-                    {% elif person_status == 'ready' %}
-                        <div class="calendar">
-                            <form action="." method="post">
-                                <input type="image" src="/media/start.png" />
-                                {% csrf_token %}
-                            </form>
-                    {% else %}
-                        <div class="calendar"><p>XX</p>
-                    {% endif %}
-                        <img src="/media/calendar.png"></div>
+                    <div class="profil">
+                        <a href="{% url 'settings' %}"><img src="/media/profil.png"></a>
+                    </div>
+                    <div class="calendar">
+                        <img src="/media/kalendarz.png">
+
+                        {% if days >= 14 and days <= 90 and person_status == 'ongoing' %}
+                            <p class="cal_text">{{days}}</p>
+                        {% elif person_status == 'ready' %}
+                                <div class="cal_input">
+                                    <form action="." method="post">
+                                        <input type="submit" value="Start"/>
+                                        {% csrf_token %}
+                                    </form>
+                                </div>
+
+                        {% else %}
+                            <div class="cal_text"><p>??</p>
+                        {% endif %}
+                    </div>
+
                 </div>
                 <div class="settings_meal">
-                    <div class="settings_div">
-                        <a href="{% url 'settings' %}"><div class="settings"><img src="/media/settings.png"></div></a>
-                        <a href="{% url 'settings' %}">Settings</a>
-                    </div>
                     <div class="meal_div">
-                        <a href="{% url 'meals' %}"><div class="meal"><img src="/media/meal.png"></div></a>
-                        <a href="{% url 'meals' %}">Add a meal</a>
+                        <a href="{% url 'meals' %}"><img src="/media/chleb.png"></a>
+                    </div>
+
+                    <div class="settings_div">
+                        <a href="#"><img src="/media/premium.png"></a>
                     </div>
                 </div>
+                 <div class="line"><img src="/media/line.png"></div>
                 <div class="bars">
-                    <div class="daily"><p>Daily limit</p></div>
+                    <div class="daily"><p>Dzienny limit</p></div>
                     <div class="values">
 
                             <div class="box">
@@ -40,7 +48,11 @@
                                <hr class="cal">
                               <p class="cal">{{daily_calory_limit}}</p>
                                 <hr class="cal">
-                              <p class="cal">cal [kcal]</p>
+                                 <p class="cal">[kcal]</p>
+                                <hr class="cal">
+                              <p class="cal">kalor.</p>
+
+
 
                             </div>
 <!--                            <p>kcal</p>-->
@@ -51,7 +63,9 @@
                                <hr class="carb">
                               <p class="carb">{{limit_carb}}</p>
                                 <hr class="carb">
-                              <p class="carb">carb [g]</p>
+                                <p class="carb">[g]</p>
+                                <hr class="carb">
+                              <p class="carb">węgl.</p>
                             </div>
 <!--                            <p>prot</p>-->
 
@@ -61,7 +75,9 @@
                                <hr class="hr_prot">
                               <p class="prot">{{limit_prot}}</p>
                                 <hr class="prot">
-                              <p class="prot">prot [g]</p>
+                                <p class="prot">[g]</p>
+                                <hr class="prot">
+                              <p class="prot">biał.</p>
                             </div>
 <!--                            <p>carb</p>-->
 
@@ -71,7 +87,9 @@
                                <hr class="hr_fat">
                               <p class="fat">{{limit_fat}}</p>
                                 <hr class="fat">
-                              <p class="fat">fat [g]</p>
+                                <p class="fat">[g]</p>
+                                <hr class="fat">
+                              <p class="fat">tłusz.</p>
                             </div>
 <!--                            <p>fat</p>-->
 

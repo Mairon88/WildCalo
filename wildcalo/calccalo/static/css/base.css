@@ -58,7 +58,7 @@ table {
 body {
         background-color: #757163ff;
         padding-top: 10px;
-        padding-bottom: 10px;
+        padding-bottom: 5px;
         padding-left: 15px;
         padding-right: 15px;
         font-family: 'Peralta', cursive;
@@ -95,7 +95,6 @@ a {
 
     .logo {
         display: flex;
-
         margin-bottom: 5px;
         align-items: center;
         justify-content: space-around;
@@ -123,15 +122,16 @@ a {
 
     }
 
-    .new_logo2 {
-       text-align: center;
-       width: 80%;
+    .logo2 {
+        display: flex;
+        margin-bottom: 5px;
+        align-items: center;
+        justify-content: space-around;
 
     }
-
-    .new_logo2 img {
-     margin-right: 25%;
-        width: 50%;
+    .logo2 img {
+        margin-top: 10px;
+        width: 85%;
 
     }
 
@@ -158,13 +158,13 @@ a {
 
     }
 
-       input[type="submit"] {
+       input[type="submit"]:not(.save, .cal_text){
       background-color: transparent;
       border: none;
-      font-size: 85%;
+      font-size: 100%;
       font-weight: bold;
       font-family: 'Peralta', cursive;
-      width: 250px;
+      width: 100px;
       text-align: center;
       -webkit-box-sizing:border-box;
       -moz-box-sizing:border-box;
@@ -172,7 +172,6 @@ a {
       vertical-align:top;
       height:35px;
       display:block;
-      margin-top: 10px;
       margin-left: auto;
       margin-right: auto;
       line-height: 80%;
@@ -181,12 +180,9 @@ a {
     }
 
 
-
-
-
     .forms{
         text-align: center;
-        font-size: 7vw;
+        font-size: 6vw;
 
     }
 
@@ -240,21 +236,17 @@ a {
        margin-bottom: 20px;
     }
 
-    .register a, .user a, .logout a{
-        color: #a1a1a1ff;
+    .register a, .logout a{
+        color: #484848;
     }
 
 
     .boar_cal{
-        background: #8a8674ff;
-        border-radius: 30px;
         opacity: 1;
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        margin-top: 5%;
-        margin-bottom: 5%;
-        box-shadow: 0px 5px 10px #21201cff;
+
 
     }
 
@@ -264,17 +256,16 @@ a {
         justify-content: center;
         text-align: center;
         width: 50%;
-
+        height: 35vw;
 
     }
 
-    .boar_with_carrot img {
-        width: 85%;
+    .profil img {
+        width: 55%;
         text-align: center;
-        margin-left: 10%;
     }
 
-    .boar_with_carrot {
+    .profil {
         width: 50%;
 
     }
@@ -283,51 +274,63 @@ a {
         width: 100%;
         text-align: center;
 
-
     }
 
         .calendar p{
-        position: relative;
-        padding-top: 30%;
-        left: 36%;
+        position: absolute;
         text-align: center;
 
     }
 
+
+
     .calendar img {
-        width: 55%;
-        margin-top: 10%;
-        margin-bottom: 10%;
-        margin-right:10%
+        width: 80%;
+        margin-top: -8%;
 
     }
 
-        .settings_meal{
-        border-radius: 30px;
+    .settings_meal{
         opacity: 1;
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        margin-bottom: 5%;
+        justify-content: flex-start;
+
+
     }
 
-        .bars{
-        background: #8a8674ff;
-        border-radius: 30px;
+    .settings_meal div{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 50%;
+        height: 35vw;
+    }
+
+        .meal_div img {
+        width: 90%;
+        text-align: center;
+    }
+
+        .settings_div img {
+        width: 70%;
+        text-align: center;
+    }
+
+     .bars{
         opacity: 1;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-around;
-
-        box-shadow: 0px 5px 10px #21201cff;
-        height: 45vw;
+        height: 30vw;
 
     }
 
     .box p{
-        font-size: 6vw;
-        line-height: 50%;
+        font-size: 5vw;
+        line-height: 15%;
         margin: 0;
         padding: 0;
     }
@@ -337,9 +340,9 @@ a {
     .daily {
         width: 100%;
         text-align: center;
-        margin-top: 2%;
-        margin-bottom: 2%;
-        font-size: 85%;
+        margin-bottom: 5%;
+        font-size: 65%;
+        opacity: 0.85;
     }
 
     .values {
@@ -366,65 +369,22 @@ a {
         font-size: 6vw;
     }
 
-     .settings_meal div{
-        text-align: center;
-        font-size:7vw;
-    }
 
     .settings_div {
-
-    background: #8a8674ff;
-    border-radius: 30px;
     line-height: 1.2;
     font-size: 25px;
     width: 45%;
-    box-shadow: 0px 5px 10px #21201cff;
     }
 
     .meal_div {
-    background: #8a8674ff;
-    border-radius: 30px;
     line-height: 1.2;
     font-size: 25px;
     width: 45%;
-    box-shadow: 0px 5px 10px #21201cff;
-    }
-
-   .settings img {
-
-        width: 55%;
-        margin-top: 10%;
-        margin-bottom: 10%;
-    }
-
-    .settings {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    }
-
-    .meal {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    }
-
-   .meal img {
-    width: 70%;
-    margin-top: 10%;
-    margin-bottom: 10%;
     }
 
     .logout {
     margin-top: 10%;
          width: 100%;
-    }
-
-    .user {
-        text-align: right;
-        width: 20%;
     }
 
     .kcal, .prot, .fat, .carb {
@@ -437,34 +397,7 @@ a {
 
 /* SETTINGS */
 
-    .settings select {
-      background-color :#928b67ff;
-      font-size: 24px;
-      font-family: 'Peralta', cursive;
-      width: 250px;
-      text-align: center;
-      -webkit-box-sizing:border-box;
-      -moz-box-sizing:border-box;
-      box-sizing:border-box;
-      vertical-align:top;
-      display:block;
-      margin-top: 5%;
-      margin-bottom:  5%;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 80%;
-      color: black;
-      border: none;
 
-
-    }
-
-    .settings2 {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    }
 
     .settings2 div{
         width: 100%;
@@ -474,26 +407,28 @@ a {
         border-radius: 5px;
         align-items: center;
         justify-content: space-around;
-        font-size: 6vw;
+        font-size: 5vw;
     }
 
 
     .settings2 input:not(.save, .calculate){
-    background: #c5cacaff;
     border-radius: 20px;
     width: 50%;
-    font-size: 5vw;
+    font-size: 4vw;
     justify-content: flex-start;
     margin: 0;
+    height: 7vw;
+    opacity: 0.7;
     }
 
     .settings2 select{
-    background: #c5cacaff;
     border-radius: 20px;
     text-align-last:center;
-    font-size: 5vw;
+    font-size: 4vw;
     width: 100%;
     margin: 0;
+    height: 7vw;
+    opacity: 0.7;
     }
 
     .line {
@@ -515,24 +450,31 @@ a {
     width: 30%;
     }
 
-    .blind {
-    color: #928b67ff;
-    opacity: 0.0;
-    }
-
     .line span {
         white-space: pre;
-        font-size: 5vw;}
+        font-size: 4vw;
+        }
 
+     .line span:not(.blind){
+        opacity: 0.7;
+        }
+
+    .blind {
+        color: #928b67ff;
+        opacity: 0;
+    }
 
     .label_line p{
+        font-size: 4vw;
         text-align: center;
+        opacity: 0.7;
+
     }
 
     h1 {
-     font-size: 8vw;
+     font-size: 5vw;
      text-align: center;
-     margin: 5%;
+     margin-bottom: 5%;
     }
 
     .info {
@@ -544,17 +486,20 @@ a {
     .info div{
         align-items: center;
         justify-content: center;
-
+        margin-top: 5px;
+        margin-bottom: 5px;
     }
 
     .info_content p{
-    font-size: 90%;
+    font-size: 80%;
     text-align: justify;
+    line-height: 130%;
+
 
     }
 
     .info_content p span{
-    color: #c5cacaff;
+    color: #484848;
 
     }
 
@@ -570,18 +515,47 @@ a {
     .calculate div{
     text-align: center;
     }
+
     .back_save {
         display: flex;
+
     }
 
     .back_save div {
-    width: 50%;
-    align-items: center;
-    justify-content: space-between;
+    margin-top: 5%;
+    width: 40%;
     }
 
-    .back_save div p{
-    text-align: right;
+    .back_save div a{
+    opacity: 0.7;
+    }
+
+    .save {
+        width: 50%;
+    }
+
+
+    input[type="submit"]{
+      background-color: transparent;
+      border: none;
+      font-size: 100%;
+      font-weight: bold;
+      font-family: 'Peralta', cursive;
+      width: 100%;
+      text-align: center;
+      -webkit-box-sizing:border-box;
+      -moz-box-sizing:border-box;
+      box-sizing:border-box;
+      vertical-align:top;
+      height:5vw;
+      display:block;
+      margin-top: 0px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 80%;
+      color: black;
+
+
     }
 
     .cal {
@@ -619,9 +593,31 @@ a {
     display: none;
     }
 
-    p, h1, h2, a {
+    p, h1, h2 {
     opacity: 0.7;
     }
+
+    .header a {
+    color: black;
+    font-size: 5vw;
+    opacity: 0.6;
+
+    }
+
+    .header a{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    }
+
+    .cal_input{
+    width: 50px;
+    position: absolute;
+    text-align: center;
+    opacity: 0.7;
+    }
+
+
 
 }
 

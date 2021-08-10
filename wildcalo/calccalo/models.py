@@ -3,16 +3,16 @@ from django.conf import settings
 
 class Profile(models.Model):
     GENDER_CHOICES = {
-        ('male','Male'),
-        ('female','Female')
+        ('male','Mężczyzna'),
+        ('female','Kobieta')
     }
 
     ACTIVITY_CHOICES = [
-        ('sit','Sedentary lifestyle'),
-        ('low','Low activity'),
-        ('mod', 'Moderate activity'),
-        ('high','High activity'),
-        ('vhigh', 'Very high activity')
+        ('sit','Bardzo niska'),
+        ('low','Niska'),
+        ('mod', 'Średnia'),
+        ('high','Wysoka'),
+        ('vhigh', 'Bardzo wysoka')
     ]
 
     STATUS_CHOICES = {
@@ -99,21 +99,21 @@ class MealsProducts(models.Model):
 
 class Products(models.Model):
     TYPE_CHOICES = [
-        ('vegetables','Vegetables'),
-        ('fruits','Fruits'),
-        ('meat', 'Meat'),
-        ('fish', 'Fish'),
-        ('sea foods', 'Sea foods'),
-        ('dairy foods', 'Dairy foods'),
-        ('eggs', 'Eggs'),
-        ('nuts', 'Nuts'),
-        ('seeds','Seeds'),
-        ('sweets', 'Sweets'),
-        ('salty snacks','Salty snacks'),
-        ('drinks', 'Drinks'),
-        ('breads', 'Breads'),
-        ('spices', 'Spices'),
-        ('others','Others'),
+        ('vegetables','Warzywa'),
+        ('fruits','Owoce'),
+        ('meat', 'Mięso'),
+        ('fish', 'Ryby'),
+        ('sea foods', 'Owoce morza'),
+        ('dairy foods', 'Produkty mleczne'),
+        ('eggs', 'Jajka'),
+        ('nuts', 'Orzechy'),
+        ('seeds','Nasiona'),
+        ('sweets', 'Słodycze'),
+        ('salty snacks','Słone przekąski'),
+        ('drinks', 'Napoje'),
+        ('breads', 'Chleb'),
+        ('spices', 'Przyprawy'),
+        ('others','Inne'),
     ]
     name = models.CharField(max_length=50, unique=True)
     type = models.CharField(max_length=50, choices=TYPE_CHOICES)

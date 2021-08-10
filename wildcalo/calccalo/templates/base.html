@@ -25,15 +25,15 @@
         {% endif %}
 
         {% if request.user.is_authenticated %}
-            <div class="user">
+
 
     <!--                Witaj, {{ request.user.first_name }}!-->
-                    <a href="{% url 'logout' %}"><input class="logout" type="image" name="submit" src="/media/logout.png"  alt="Submit"/></a>
+                    <a href="{% url 'logout' %}">Wyloguj</a>
 
 
     <!--                <a href="{% url 'login' %}">Login</a>-->
 
-            </div>
+
         {% endif %}
     </div>
     <div class="line"><img src="/media/line.png"></div>

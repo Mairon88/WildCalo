@@ -30,13 +30,14 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = ('gender', 'age', 'weight', 'height', 'physical_activity', 'new_weight', 'time')
 
-    gender = forms.CharField(widget=forms.Select(choices=Profile.GENDER_CHOICES))
-    age = forms.IntegerField()
-    weight = forms.IntegerField()
-    height = forms.IntegerField()
-    new_weight = forms.IntegerField()
-    physical_activity = forms.CharField(widget=forms.Select(choices=Profile.ACTIVITY_CHOICES))
-    time = forms.IntegerField()
+    gender = forms.CharField(label='Płeć', widget=forms.Select(choices=Profile.GENDER_CHOICES))
+    age = forms.IntegerField(label='Wiek')
+    weight = forms.IntegerField(label='Waga')
+    height = forms.IntegerField(label='Wzrost')
+    new_weight = forms.IntegerField(label='Nowa waga')
+    physical_activity = forms.CharField(label='Aktywność fizyczna',widget=forms.Select(choices=Profile.ACTIVITY_CHOICES))
+    time = forms.IntegerField(label='Czas')
+
 
 class BreakfastProductsForm(forms.ModelForm):
     class Meta:
