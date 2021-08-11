@@ -27,6 +27,7 @@ def dashboard(request):
 
     time = request.user.profile.time
 
+
     profile = request.user.profile
 
     profile.kcal = Meals.objects.filter(person=profile).aggregate(Sum('kcal'))['kcal__sum']
@@ -67,7 +68,7 @@ def dashboard(request):
         profile.days_left = abs((profile.end_date - today).days)
         profile.save()
 
-    if profile.days_left == 0:
+    if profile.days_left == 0 and profile.status == 'ongoing':
         profile.status = 'waiting'
         profile.time = None
         profile.weight = None
@@ -75,7 +76,7 @@ def dashboard(request):
         meal = Meals.objects.filter(person=profile.id)
         meal.delete()
         profile.save()
-        return HttpResponseRedirect(request.path_info)
+
 
     return render(request,
                   'account/dashboard.html',
@@ -243,7 +244,7 @@ def meals(request):
         meal.kcal = MealsProducts.objects.filter(meal=meal).aggregate(Sum('kcal'))['kcal__sum']
         meal.carb = MealsProducts.objects.filter(meal=meal).aggregate(Sum('carb'))['carb__sum']
         meal.prot = MealsProducts.objects.filter(meal=meal).aggregate(Sum('prot'))['prot__sum']
-        meal.fat = MealsProducts.objects.filter(meal=meal).aggregate(Sum('prot'))['prot__sum']
+        meal.fat = MealsProducts.objects.filter(meal=meal).aggregate(Sum('fat'))['fat__sum']
         if (meal.kcal or meal.carb or meal.prot or meal.fat) is None:
             meal.kcal = 0
             meal.carb = 0
@@ -341,7 +342,6 @@ def meals(request):
                   )
 @login_required
 def user_products(request):
-    print("dodajemy produkt")
     if request.method == 'POST':
         user_prod_form = ProductsForm(request.POST)
         if user_prod_form.is_valid():

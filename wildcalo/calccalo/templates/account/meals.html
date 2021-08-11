@@ -4,33 +4,43 @@
 
 {% block content %}
         {% if request.user.is_authenticated %}
-            <h1>Add a meal</h1>
-            <p>{{message}}</p>
-            <div class="today">{{ today }}</div>
-            <p>No product? Add it <a href="{% url 'user_products' %}"><span>here</span></a>.</p>
-            <p>Breakfast</p>
-            <button onclick="myFunction_breakfast()">Show/Hide</button>
-            <form action="." method="get">
-                {{ breakfast_form.weightb }}
-                {{ breakfast_form.productb }}
-                {% csrf_token %}
-                <input type="submit" value="add">
-                 <hr>
+            <h1>Dodaj produkt do posiłku</h1>
+            <p class="message">{{message}}</p>
+<!--            <div class="today">{{ today }}</div>-->
+            <p class="add_product">Brak produktu? Dodaj go <a href="{% url 'user_products' %}"><span>tutaj</span></a>.</p>
 
-                <p>kcal:{{breakfast_kcal}},carb:{{breakfast_carb}}, prot:{{breakfast_prot}}, fat:{{breakfast_fat}}</p>
-            </form>
-            <div id="breakfast_hide_show">
-                {% for product in breakfast_products %}
-                    {{ product.name }} {{ product.kcal }} {{ product.carb }} {{ product.prot }} {{ product.fat }}
-                    <div class="del"><form method="POST">
-                        <button name="delete_items" type="submit" value="{{ product.pk }}">X</button>
+            <div class="breakfast">
+                <div><p class="meal">Śniadanie</p></div>
+    <!--            <button onclick="myFunction_breakfast()">Show/Hide</button>-->
+                <div class="add_meal_form"><form action="." method="get">
+
+                    <div class="product">{{ breakfast_form.productb }}</div>
+                    <div class="weight">{{ breakfast_form.weightb }}</div>
                         {% csrf_token %}
-                    </form></div>
-                    <hr>
-                {% endfor %}
-            <hr><hr>
+                    <div class="add"><input type="submit" value="+"></div>
+                     </form>
+                </div>
+
+
+                    {% for product in breakfast_products %}
+                    <div class="product_param_del">
+                        <div class="product"><p>{{ product.name|truncatechars:10 }}</p></div>
+                        <div class="weight"><p>{{ product.weight }}</p></div>
+                        <div class="del">
+                            <form method="POST">
+                            <button  class="del" name="delete_items" type="submit" value="{{ product.pk }}">-</button>
+                            {% csrf_token %}
+                        </form></div>
+
+                    </div>
+                <div class="param">kal. {{ product.kcal }} / węgl. {{ product.carb }} / biał. {{ product.prot }} / tłusz. {{ product.fat }}</div>
+                    {% endfor %}
+<!--                    <div class="sum">kal.{{breakfast_kcal}} / węgl.{{breakfast_carb}} / biał.{{breakfast_prot}} / tłusz.{{breakfast_fat}}</div>-->
+                </div>
+
             </div>
-            <p>II Breakfast</p>
+            <div class="line"><img src="/media/line.png"></div>
+            <p class="meal">Drugie śniadanie</p>
             <button onclick="myFunction_breakfast_2()">Show/Hide</button>
             <form action="." method="get">
                 {{ breakfast2_form.weightb2 }}
@@ -50,7 +60,29 @@
                 {% endfor %}
             <hr><hr>
             </div>
-            <p>Lunch</p>
+
+            <p class="meal">Obiad</p>
+            <button onclick="myFunction_dinner()">Show/Hide</button>
+            <form action="." method="get">
+                {{ dinner_form.weightd }}
+                {{ dinner_form.productd }}
+                {% csrf_token %}
+                <input type="submit" value="add">
+                <p>kcal:{{dinner_kcal}},carb:{{dinner_carb}}, prot:{{dinner_prot}}, fat:{{dinner_fat}}</p>
+            </form>
+            <div id="dinner_hide_show">
+                {% for product in dinner_products %}
+                    {{ product.name }} {{ product.kcal }} {{ product.carb }} {{ product.prot }} {{ product.fat }}
+                    <div class="del"><form method="POST">
+                        <button name="delete_items" type="submit" value="{{ product.pk }}">X</button>
+                        {% csrf_token %}
+                    </form></div>
+                    <hr>
+                {% endfor %}
+            <hr><hr>
+            </div>
+
+            <p class="meal">Podwieczorek</p>
 
              <button onclick="myFunction_lunch()">Show/Hide</button>
             <form action="." method="get">
@@ -71,27 +103,10 @@
                 {% endfor %}
             <hr><hr>
             </div>
-            <p>Dinner</p>
-            <button onclick="myFunction_dinner()">Show/Hide</button>
-            <form action="." method="get">
-                {{ dinner_form.weightd }}
-                {{ dinner_form.productd }}
-                {% csrf_token %}
-                <input type="submit" value="add">
-                <p>kcal:{{dinner_kcal}},carb:{{dinner_carb}}, prot:{{dinner_prot}}, fat:{{dinner_fat}}</p>
-            </form>
-            <div id="dinner_hide_show">
-                {% for product in dinner_products %}
-                    {{ product.name }} {{ product.kcal }} {{ product.carb }} {{ product.prot }} {{ product.fat }}
-                    <div class="del"><form method="POST">
-                        <button name="delete_items" type="submit" value="{{ product.pk }}">X</button>
-                        {% csrf_token %}
-                    </form></div>
-                    <hr>
-                {% endfor %}
-            <hr><hr>
-            </div>
-            <p>Supper</p>
+
+
+
+            <p class="meal">Kolacja</p>
             <button onclick="myFunction_supper()">Show/Hide</button>
             <form action="." method="get">
                 {{ supper_form.weightsu }}
@@ -111,7 +126,7 @@
                 {% endfor %}
             <hr><hr>
             </div>
-            <p>Snacks</p>
+            <p class="meal">Przekąski</p>
             <button onclick="myFunction_snacks()">Show/Hide</button>
             <form action="." method="get">
                 {{ snacks_form.weightsn }}

@@ -44,8 +44,8 @@ class BreakfastProductsForm(forms.ModelForm):
         model = MealsProducts
         fields = ('weight',)
 
-    weightb= forms.FloatField()
-    productb= forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Name of product'}))
+    weightb= forms.FloatField(widget=forms.NumberInput(attrs={'placeholder': 'Waga [g]'}))
+    productb= forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Nazwa produktu'}))
 
 
 class Breakfast2ProductsForm(forms.ModelForm):
@@ -53,40 +53,40 @@ class Breakfast2ProductsForm(forms.ModelForm):
         model = MealsProducts
         fields = ('weight',)
 
-    weightb2= forms.FloatField()
-    productb2= forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Name of product'}))
+    weightb2= forms.FloatField(widget=forms.NumberInput(attrs={'placeholder': 'Waga [g]'}))
+    productb2= forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Nazwa produktu'}))
 
 class LunchProductsForm(forms.ModelForm):
     class Meta:
         model = MealsProducts
         fields = ('weight',)
 
-    weightl= forms.FloatField()
-    productl= forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Name of product'}))
+    weightl= forms.FloatField(widget=forms.NumberInput(attrs={'placeholder': 'Waga [g]'}))
+    productl= forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Nazwa produktu'}))
 
 class DinnerProductsForm(forms.ModelForm):
     class Meta:
         model = MealsProducts
         fields = ('weight',)
 
-    weightd= forms.FloatField()
-    productd= forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Name of product'}))
+    weightd= forms.FloatField(widget=forms.NumberInput(attrs={'placeholder': 'Waga [g]'}))
+    productd= forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Nazwa produktu'}))
 
 class SupperProductsForm(forms.ModelForm):
     class Meta:
         model = MealsProducts
         fields = ('weight',)
 
-    weightsu= forms.FloatField()
-    productsu= forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Name of product'}))
+    weightsu= forms.FloatField(widget=forms.NumberInput(attrs={'placeholder': 'Waga [g]'}))
+    productsu= forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Nazwa produktu'}))
 
 class SnacksProductsForm(forms.ModelForm):
     class Meta:
         model = MealsProducts
         fields = ('weight',)
 
-    weightsn= forms.FloatField()
-    productsn= forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Name of product'}))
+    weightsn= forms.FloatField(widget=forms.NumberInput(attrs={'placeholder': 'Waga [g]'}))
+    productsn= forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Nazwa produktu'}))
 
 
 class NameField(forms.CharField):

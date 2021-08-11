@@ -589,9 +589,9 @@ a {
         font-size: 6vw;
     }
 
-    #breakfast_hide_show, #breakfast2_hide_show, #dinner_hide_show, #supper_hide_show, #snacks_hide_show {
+    /*#breakfast_hide_show, #breakfast2_hide_show, #dinner_hide_show, #supper_hide_show, #snacks_hide_show {
     display: none;
-    }
+    }*/
 
     p, h1, h2 {
     opacity: 0.7;
@@ -617,8 +617,113 @@ a {
     opacity: 0.7;
     }
 
+    .meal {
+        font-size: 6vw;
+    }
+
+    .add_product {
+        font-size: 4vw;
+        margin-bottom: 5%;
+    }
+
+    .add_product a{
+    color: #8a5154f3;
+    }
+
+    #id_weightb {
+        width: 100%;
+        font-size: 4vw;
+    }
+
+    #id_productb {
+        width: 100%;
+        font-size: 4vw;
+    }
+
+    .add_meal_form form {
+        display: flex;
+        margin: 0;
+        padding: 0;
+    }
 
 
+    .add_meal_form div {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin: 1%;
+        margin-top: 2%;
+
+
+    }
+
+    .add_meal_form div input[type="text"], input[type="number"]{
+        margin: 0;
+    }
+        .add {
+        width: 10%;
+        font-size: 7vw;
+        padding: 0;
+
+    }
+
+    .weight {
+        width: 30%;
+    }
+
+    .product {
+        width: 60%;
+    }
+
+    .add_meal_form {
+            font-size: 5vw;
+
+        }
+
+    .param {
+        font-size: 4vw;
+        text-align: center;
+        opacity: 0.5;
+
+    }
+
+    .sum {
+        font-size: 4vw;
+        color: #44325df3;
+        text-align: center;
+    }
+
+    .product_param_del{
+        display: flex;
+        margin: 0;
+        padding: 0;
+    }
+
+
+    .product_param_del div {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin: 2%;
+        margin-top: 2%;
+        font-size: 5vw;
+
+
+    }
+
+    .add_meal_form div input[type="text"], input[type="number"]{
+        margin: 0;
+    }
+        .del button {
+        background-color: Transparent;
+        background-repeat:no-repeat;
+        border: none;
+        cursor:pointer;
+        overflow: hidden;
+        outline:none;
+        font-size: 10vw;
+
+    }
 }
 
 
