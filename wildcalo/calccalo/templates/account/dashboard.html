@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Penel główny{% endblock %}
+{% block title %}Panel główny{% endblock %}
 
 {% block content %}
         {% if request.user.is_authenticated %}
@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="settings_div">
-                        <a href="#"><img src="/media/premium.png"></a>
+                        <a href="{% url 'premium' %}"><img src="/media/premium.png"></a>
                     </div>
                 </div>
                  <div class="line"><img src="/media/line.png"></div>

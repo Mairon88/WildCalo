@@ -390,4 +390,7 @@ def product_list(request):
         return JsonResponse(serializer.errors, status=400)
 
 
-
+@login_required
+def premium(request):
+    return render(request,
+                  'account/premium.html',)
