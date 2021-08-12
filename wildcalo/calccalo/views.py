@@ -75,6 +75,10 @@ def dashboard(request):
         profile.new_weight = None
         meal = Meals.objects.filter(person=profile.id)
         meal.delete()
+        profile.kcal = 0
+        profile.prot = 0
+        profile.carb = 0
+        profile.fat = 0
         profile.save()
 
 
@@ -124,6 +128,13 @@ def settings(request):
         dd_dcl = calculate.calculate_deficit()
         person.daily_calory_limit = dd_dcl[1]
         person.status = 'ready'
+        meal = Meals.objects.filter(person=person.id)
+        meal.delete()
+        person.kcal = 0
+        person.prot = 0
+        person.carb = 0
+        person.fat = 0
+        person.save()
         person.save()
         def_percent = calculate.is_deficit_to_big()
 
@@ -292,7 +303,7 @@ def meals(request):
     if request.method == "POST" and request.POST.get('delete_items'):
         items_to_delete = request.POST.getlist('delete_items')
         MealsProducts.objects.filter(pk__in=items_to_delete).delete()
-        return HttpResponseRedirect(request.path_info)
+
 
 
 
@@ -338,7 +349,16 @@ def meals(request):
                    'supper_products': supper_products,
                    'snacks_products': snacks_products,
                    'message': message,
+                   'limit_carb': request.user.profile.limit_carb,
+                   'limit_prot': request.user.profile.limit_prot,
+                   'limit_fat': request.user.profile.limit_fat,
+                   'daily_calory_limit': request.user.profile.daily_calory_limit,
+                   'kcal': profile.kcal,
+                   'prot': profile.prot,
+                   'carb': profile.carb,
+                   'fat': profile.fat,
                    }
+
                   )
 @login_required
 def user_products(request):

@@ -31,7 +31,11 @@
                 </div>
                 <div class="settings_meal">
                     <div class="meal_div">
-                        <a href="{% url 'meals' %}"><img src="/media/chleb.png"></a>
+                        {% if person_status == 'ongoing' %}
+                            <a href="{% url 'meals' %}"><img src="/media/chleb.png"></a>
+                        {% else %}
+                            <a href=""><img src="/media/chleb.png"></a>
+                        {% endif %}
                     </div>
 
                     <div class="settings_div">

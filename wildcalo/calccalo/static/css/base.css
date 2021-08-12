@@ -164,7 +164,7 @@ a {
       font-size: 100%;
       font-weight: bold;
       font-family: 'Peralta', cursive;
-      width: 100px;
+      width: 110px;
       text-align: center;
       -webkit-box-sizing:border-box;
       -moz-box-sizing:border-box;
@@ -187,7 +187,7 @@ a {
     }
 
     .forgot {
-        margin-top:5px;
+        margin-top:10%;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -202,7 +202,7 @@ a {
     }
 
     .login, .send{
-         width: 30%;
+         width: 35%;
     }
     .create {
          width: 70%;
@@ -335,12 +335,17 @@ a {
         padding: 0;
     }
 
-
+    .box2 p{
+        font-size: 4vw;
+        line-height: 15%;
+        margin: 0;
+        padding: 0;
+    }
 
     .daily {
         width: 100%;
         text-align: center;
-        margin-bottom: 5%;
+        margin-bottom: 10%;
         font-size: 65%;
         opacity: 0.85;
     }
@@ -366,7 +371,7 @@ a {
         width: 100%;
         align-items: center;
         justify-content: space-around;
-        font-size: 6vw;
+        font-size: 5vw;
     }
 
 
@@ -522,7 +527,7 @@ a {
     }
 
     .back_save div {
-    margin-top: 5%;
+    margin-top: 10%;
     width: 40%;
     }
 
@@ -574,9 +579,11 @@ a {
         color: #345b52f3;
     }
 
-    .box hr {
+    .box hr, .box2 hr {
         border: solid 1px black;
     }
+
+
 
 
       input[type="text"] .list ,input[type="number"] .list ,input[type="file"] .list ,input[type="password"] .list , input[type="email"] .list ,select{
@@ -618,7 +625,7 @@ a {
     }
 
     .meal {
-        font-size: 6vw;
+        font-size: 5vw;
     }
 
     .add_product {
@@ -626,16 +633,22 @@ a {
         margin-bottom: 5%;
     }
 
+    .add_product2 {
+    font-size: 4vw;
+    margin-bottom: 10%;
+    text-align: center;
+    }
+
     .add_product a{
     color: #8a5154f3;
     }
 
-    #id_weightb {
+    #id_weightb, #id_weightb2,  #id_weightd, #id_weightl,  #id_weightsu, #id_weightsn     {
         width: 100%;
         font-size: 4vw;
     }
 
-    #id_productb {
+    #id_productb, #id_productb2, #id_productd, #id_productl, #id_productsu, #id_productsn   {
         width: 100%;
         font-size: 4vw;
     }
@@ -723,6 +736,48 @@ a {
         outline:none;
         font-size: 10vw;
 
+    }
+
+    .scroll {
+    height: 75vw;
+     overflow: scroll;
+    }
+
+    .back_save2 {
+        display: flex;
+
+    }
+
+    .back_save2 div {
+    width: 40%;
+    margin-left: 20%;
+    }
+
+    .back_save2 div a{
+    opacity: 0.7;
+    font-size: 5vw;
+    }
+
+        .back_save3 {
+        display: flex;
+
+    }
+
+    .back_save3 div {
+    width: 40%;
+    margin-top: 35%;
+    margin-left: 20%;
+    }
+
+    .back_save3 div a{
+    opacity: 0.7;
+    font-size: 5vw;
+    }
+
+    .save_prod {
+        text-align: center;
+        margin-top: 10%;
+        margin-bottom: 10%;
     }
 }
 

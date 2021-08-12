@@ -99,12 +99,12 @@ class ProductsForm(forms.ModelForm):
         model = Products
         fields = ('name','type', 'kcal', 'carb', 'prot', 'fat')
 
-    name = NameField()
-    type = forms.ChoiceField(choices = Products.TYPE_CHOICES)
-    kcal = forms.FloatField()
-    carb = forms.FloatField()
-    prot = forms.FloatField()
-    fat = forms.FloatField()
+    name = NameField(label='Nazwa')
+    type = forms.ChoiceField(choices = Products.TYPE_CHOICES, label='Typ')
+    kcal = forms.FloatField(label='Kalorie')
+    carb = forms.FloatField(label='Węglowodany')
+    prot = forms.FloatField(label='Białko')
+    fat = forms.FloatField(label='Tłuszcz')
 
     def clean_title(self):
         return self.cleaned_data['name'].title()
