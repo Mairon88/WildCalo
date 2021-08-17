@@ -212,8 +212,8 @@ def meals(request):
 
                 if obj.active:
 
-                    if weight <= 0:
-                        message = "Sorry, weight is lower or equal 0, it does not make sense"
+                    if not 0 < weight <= 1000:
+                        message = "Waga pojedynczego produktu powinna mieścić się w granicach od 1g do 1000g"
                         break
 
                     meal_id = Meals.objects.get(person=profile, name=form[1])
@@ -237,7 +237,7 @@ def meals(request):
                     return HttpResponseRedirect(request.path_info)
 
                 else:
-                    message = "Sorry, the given product is not active now"
+                    message = "Niestety, ale wybrany produkt jest nieaktywny :("
 
 
             # dodać do konkretnego posilku ale i do ogolnego kcal uzytkownika
@@ -247,7 +247,7 @@ def meals(request):
 
 
             except:
-                message = "The given product is not on the list of available products"
+                message = "Niestety, ale wybranego produktu nie ma w bazie :("
 
 
     #Ta pętla i każda inna, która coś dodaje zmienić na pobieranie listy konkretnych wartosci np. wszystkie posiłki śniadanie i kcal. zastosować sum(lista)
@@ -303,9 +303,22 @@ def meals(request):
     if request.method == "POST" and request.POST.get('delete_items'):
         items_to_delete = request.POST.getlist('delete_items')
         MealsProducts.objects.filter(pk__in=items_to_delete).delete()
+        return HttpResponseRedirect(request.path_info)
 
+    profile = request.user.profile
 
+    profile.kcal = Meals.objects.filter(person=profile).aggregate(Sum('kcal'))['kcal__sum']
+    profile.prot = Meals.objects.filter(person=profile).aggregate(Sum('carb'))['carb__sum']
+    profile.carb = Meals.objects.filter(person=profile).aggregate(Sum('prot'))['prot__sum']
+    profile.fat = Meals.objects.filter(person=profile).aggregate(Sum('fat'))['fat__sum']
 
+    if (profile.kcal or profile.prot or profile.carb or profile.fat) is None:
+        profile.kcal = 0
+        profile.prot = 0
+        profile.carb = 0
+        profile.fat = 0
+
+    profile.save()
 
 
     return render(request,

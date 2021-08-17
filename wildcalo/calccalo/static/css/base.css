@@ -67,6 +67,7 @@ body {
         background-image: url("/media/bg3.jpg");
         background-repeat: repeat;
         background-size: 200%;
+        min-width: 280px;
 
     }
 
@@ -76,7 +77,7 @@ a {
       text-decoration: none;
     }
 
-@media (max-width:480px) {
+@media (max-width:500px) {
 
     .header {
         display: flex;
@@ -181,17 +182,18 @@ a {
 
 
     .forms{
+        margin-top: 5%;
         text-align: center;
-        font-size: 6vw;
+        font-size: 5vw;
 
     }
 
     .forgot {
-        margin-top:10%;
+        margin-top:5%;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        font-size: 6vw;
+        font-size: 5vw;
     }
     .forgot p {
         padding: 8px;
@@ -218,21 +220,26 @@ a {
        text-align: center;
     }
 
-    .reset_pass p{
+
+
+    .reset_pass h1, .logout h1{
+        margin-top: 10%;
+       font-size: 6vw;
        margin-bottom: 20px;
     }
 
-    .reset_pass h1, .logout h1{
-       font-size: 32px;
+        .reset_pass p, .reset_pass ul{
        margin-bottom: 20px;
+       font-size: 5vw;
     }
     .register, .reset {
        text-align: center;
-       font-size: 26px;
+       font-size: 5vw;
     }
 
     .register h1, .reset h1{
-       font-size: 32px;
+        margin-top: 10%;
+       font-size: 6vw;
        margin-bottom: 20px;
     }
 
@@ -324,7 +331,7 @@ a {
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-around;
-        height: 30vw;
+        height: 25vw;
 
     }
 
@@ -527,7 +534,7 @@ a {
     }
 
     .back_save div {
-    margin-top: 10%;
+    margin-top: 5%;
     width: 40%;
     }
 
@@ -634,7 +641,7 @@ a {
     }
 
     .add_product2 {
-    font-size: 4vw;
+    font-size: 5vw;
     margin-bottom: 10%;
     text-align: center;
     }
@@ -750,7 +757,7 @@ a {
 
     .back_save2 div {
     width: 40%;
-    margin-left: 20%;
+    margin-left: 10%;
     }
 
     .back_save2 div a{
@@ -765,8 +772,8 @@ a {
 
     .back_save3 div {
     width: 40%;
-    margin-top: 35%;
-    margin-left: 20%;
+    margin-top: 20%;
+    margin-left: 10%;
     }
 
     .back_save3 div a{
@@ -782,9 +789,11 @@ a {
 
     option{
         font-size: 4vw;
-        height: 100px;
+        width: 50px;
         margin: auto auto;
-        background-color: grey;
+        background-color: white;
+        opacity: 0.1;
+        overflow: scroll;
     }
 
     .back_save_p {
@@ -793,13 +802,76 @@ a {
         align-items: flex-end;
         font-size: 5vw;
         opacity: 0.7;
-        margin-left: 20%;
+        margin-left: 10%;
 
 
     }
+
+    .message {
+        font-size: 4vw;
+        margin-bottom: 5%;
+        color: red;
+        text-align: center;
+    }
+
+    ul {
+        font-size: 5vw;
+        opacity: 0.7;
+    }
+
+    .build {
+        margin-top: 55%;
+    }
 }
+    .too_big {
+        display:block;
+    }
+
+    .max_width_info {
+        display: none;
+    }
+
+    .ui-menu-item {
+        color: black;
+        font-size: 4vw;
+    }
+
+    #id_name {
+        width: 100%;
+    }
+
+    #id_type option{
+        font-size: 3vw;
+        line-height: 0.8;
+        padding: 0;
+        margin: 0;
+        text-indent:-1.5px;
+        height: 20px;
 
 
+    }
+
+    #id_type {
+        max-height: 50px;
+    }
+
+
+@media (min-width:501px) {
+    .too_big {
+        display: none;
+    }
+        .max_width_info {
+        display: block;
+        margin: auto auto;
+        text-align: center;
+        margin-top:10%;
+    }
+
+     .max_width_info h1{
+        font-size: 20px;
+    }
+
+}
 
 
 

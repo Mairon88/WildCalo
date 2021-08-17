@@ -3,8 +3,9 @@
 {% block title %}Dodaj produkt{% endblock %}
 
 {% block content %}
+
         <p class="add_product2">Wprowadź podstawowe informacje o produkcie oraz wartości odżywcze produktu dla wagi
-            100g</p>
+                    100g</p>
         <form class="settings2" action="." method="post">
              <div class="line">
                  <div class="label_line"> <p>{{ user_prod_form.name.label }}</p></div>
@@ -12,7 +13,7 @@
              </div>
              <div class="line">
             <div class="label_line"> <p>{{ user_prod_form.type.label }}</p></div>
-                 <div class="gender">{{ user_prod_form.type }}</div>
+                 <div class="product_list">{{ user_prod_form.type }}</div>
              </div>
              <div class="line">
             <div class="label_line"> <p>{{ user_prod_form.kcal.label }}</p></div>

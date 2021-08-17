@@ -4,13 +4,17 @@
 
 {% block content %}
     <div class="register">
-        <h1>Create account</h1>
-        <p>Please complete the form below to register</p>
+        <h1>Rejestracja</h1>
+        <p>Wypełnij poniższe pola, aby się zarejestrować</p>
         <form class="forms" action="." method="post">
             {{ user_form.as_p }}
             {% csrf_token %}
-            <input class="create" type="image" name="submit" src="/media/create_account.png"  alt="Submit"/>
+           <div><p><input class="save" type="submit" name="submit" value='Stwórz konto' alt="Submit"/></p></div>
         </form>
+        <br>
     </div>
-    <a href="{% url 'dashboard' %}">Back</a>
+                      <div class="back_save2">
+                     <div><a href="{% url 'dashboard' %}">Wróć</a></div>
+                 </div>
+    <br>
 {% endblock %}

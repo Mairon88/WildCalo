@@ -11,8 +11,8 @@ class LoginForm(forms.Form):
 
 
 class UserRegistrationForm(forms.ModelForm):
-    password = forms.CharField(label='Password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Repeat Password', widget=forms.PasswordInput)
+    password = forms.CharField(label='Hasło', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Powtórz hasło', widget=forms.PasswordInput)
 
     class Meta:
         model = User
@@ -21,7 +21,7 @@ class UserRegistrationForm(forms.ModelForm):
     def clean_password2(self):
         cd = self.cleaned_data
         if cd['password'] != cd['password2']:
-            raise forms.ValidationError('Passwords do not match')
+            raise forms.ValidationError('Hasła różnią się od siebie')
         return cd['password2']
 
 class ProfileForm(forms.ModelForm):
@@ -99,7 +99,7 @@ class ProductsForm(forms.ModelForm):
         model = Products
         fields = ('name','type', 'kcal', 'carb', 'prot', 'fat')
 
-    name = NameField(label='Nazwa')
+    name = NameField(label='Nazwa', max_length=20)
     type = forms.ChoiceField(choices = Products.TYPE_CHOICES, label='Typ')
     kcal = forms.FloatField(label='Kalorie')
     carb = forms.FloatField(label='Węglowodany')
