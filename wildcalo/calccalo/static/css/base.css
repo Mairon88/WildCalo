@@ -848,11 +848,17 @@ a {
         text-indent:-1.5px;
         height: 20px;
 
-
     }
 
-    #id_type {
-        max-height: 50px;
+
+    .product_list span{
+        font-size: 4vw;
+        color: black;
+        text-align: center;
+        border-radius: 25px;
+        background-color: transparent;
+
+
     }
 
 
